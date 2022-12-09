@@ -12,10 +12,9 @@ int	main(int argc, char **argv)
 	if (argc == 4)
 	{
 		Class op;
-
 		op.get_strings(argv[2], argv[3]);
 		op.open_files(argv[1]);
-		op.append_str();
+		op.write_str_fd();
 	}
 	else
 	{

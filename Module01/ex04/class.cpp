@@ -3,7 +3,7 @@
 
 void	Class::get_strings(std::string string1, std::string string2)
 {
-	forbidden = forbidden;
+	forbidden = string1;
 	to_replace = string2;
 }
 
@@ -17,12 +17,12 @@ void	Class::open_files(std::string filename)
 	fd_in = std::ifstream(filename, std::ifstream::in);
 	if (fd_in.is_open() == true)
 	{
-		append_str();
+		write_str_fd();
 	}
 	
 }
 
-void	Class::append_str(void)
+void	Class::write_str_fd(void)
 {
 	std::string line;
 
@@ -30,6 +30,11 @@ void	Class::append_str(void)
 	while (std::getline(fd_in, line))
 		{
 			std::cout << line << std::endl;
-			fd_out << line;
+			if (line.compare(forbidden) != 0)
+				fd_out << line;
+			else
+				fd_out << to_replace;
+
+			fd_out << "\n";
 		}
 }
