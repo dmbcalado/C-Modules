@@ -8,24 +8,22 @@
 # include <cstring>
 # include <bits/stdc++.h>
 
+# define DEBUG 0
+# define INFO 1
+# define WARNING 2
+# define ERROR 3
 class Harl
 {
 	public:
-
-		void complain(std::string level);
+		void	get_case(std::string level);
+		void	complain(std::string level);
 
 	private :
+		//functions
 		void debug(void);
 		void info(void);
 		void warning(void);
 		void error(void);
-		std::ifstream	fd_in;
-		std::ofstream	fd_out;
-		std::string		forbidden;
-		std::string		to_replace;
-		std::string		
-		new_filename = "new_file.txt";
-		std::stringstream *stream;
 } ;
 
 #endif

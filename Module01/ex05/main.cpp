@@ -5,7 +5,7 @@ two strings, s1 and s2.
 It will open the file <filename> and copies its content into a new file
 <filename>.replace, replacing every occurrence of s1 with s2. */
 
-# include "header.hpp"
+# include "Harl.hpp"
 
 int	main(int argc, char **argv)
 {

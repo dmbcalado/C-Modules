@@ -1,7 +1,7 @@
-NAME = brain
+NAME = fixed
 
 SRCS =	main.cpp	\
-		class.cpp
+		Fixed.cpp
 
 
 OBJS = $(SRCS:.c=.o)
