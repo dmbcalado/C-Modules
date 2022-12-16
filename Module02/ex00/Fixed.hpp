@@ -8,31 +8,31 @@
 # include <cstring>
 # include <bits/stdc++.h>
 
-class FixedPointNbr {
+class Fixed {
 
 public:
 
 	// Default Constructor
-	FixedPointNbr() {
+	Fixed() {
 		value = 0;
 		std::cout << "Class constructed." << std::endl;
 	}
 
 	// Copy Constructor
-	FixedPointNbr(const FixedPointNbr &obj) {
+	Fixed(const Fixed &obj) {
 		value = obj.value;
 		std::cout << "Copy constructor activated." << std::endl;
 	}
 
 	// Copy Assignment operator
-	FixedPointNbr &operator = (const FixedPointNbr& old) {
+	Fixed &operator = (const Fixed& old) {
 		value = old.value;
 		std::cout << "Copy assignement operator activated." << std::endl;
 		return *this;
 	}
 
 	//Destructor
-	~FixedPointNbr() {
+	~Fixed() {
 		std::cout << "Class destructed." << std::endl;
 	}
 

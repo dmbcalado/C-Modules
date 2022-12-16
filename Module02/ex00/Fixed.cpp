@@ -1,14 +1,19 @@
 
 #include "Fixed.hpp"
 
-double	FixedPointNbr::FixedNbr() {
+double	Fixed::FixedNbr() {
 	return (double(value) / double(1<< n_bits));
 }
 
-int		FixedPointNbr::getRawBits(void) const {
+int		Fixed::getRawBits(void) const {
 	return(value);
 }
 
-void	FixedPointNbr::setRawBits(int const raw){
+void	Fixed::setRawBits(int const raw){
 	value = raw;
+}
+
+int32_t	Fixed::DoubleTo32(double nbr) {
+	setRawBits(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
+	return(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
 }

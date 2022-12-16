@@ -18,7 +18,7 @@ int	main(void)
 	FixedPointNbr a;
 	a.DoubleTo32(2);
 
-	FixedPointNbr b( a );
+	FixedPointNbr b(a);
 	a.DoubleTo32(4);
 
 	std::cout << std::endl;

@@ -52,11 +52,77 @@ public:
 	float	toFloat(void) const;
 	int		toInt(void) const;
 
+	Fixed operator + (Fixed const &obj)
+	{
+		float next = std::nextafter(float(value_d), float(value_d + 1));
+		value_d = next;
+		return next;
+	}
+
+	Fixed operator - (Fixed const &obj)
+	{
+		float prev = std::nextafter(float(value_d), float(value_d - 1));
+		value_d = prev;
+		return prev;
+	}
+
+	Fixed operator * (Fixed const &obj)
+	{
+		float mult = value_d * obj.value_d;
+		value_d = mult;
+		return mult;
+	}
+
+	Fixed operator / (Fixed const &obj)
+	{
+		float div = value_d / obj.value_d;
+		value_d = div;
+		return div;
+	}
+
+	Fixed operator < (Fixed const &obj)
+	{
+		if (value_d < obj.value_d){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	Fixed operator <= (Fixed const &obj)
+	{
+		if (value_d <= obj.value_d){
+			return true;
+		}
+		else {
+			return false;
+	}
+	}
+
+	Fixed operator > (Fixed const &obj)
+	{
+		if (value_d > obj.value_d){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	Fixed operator >= (Fixed const &obj)
+	{
+		if (value_d >= obj.value_d){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 private:
 	int			value;
 	double		value_d;
 	static const int n_bits = 8;
 } ;
-
 
 #endif
