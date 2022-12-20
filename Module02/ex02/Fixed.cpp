@@ -8,30 +8,15 @@ Fixed::Fixed() {
 }
 
 Fixed::Fixed(const float nbr) {
-		setRawBits(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
-		value_d = double(value) / double(1<< n_bits);
-		std::cout << "Class constructed." << std::endl;
+	value = roundf(nbr * (1 << n_bits));
+	value_f = (float)((float)value / (1 << n_bits));
+	std::cout << "Class constructed." << std::endl;
 }
 
-Fixed::Fixed(const double nbr) {
-		setRawBits(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
-		value_d = double(value) / double(1<< n_bits);
-		std::cout << "Class constructed." << std::endl;
-}
-
-Fixed::Fixed(int nbr) {
-		setRawBits(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
-		value_d = double(value) / double(1<< n_bits);
-		std::cout << "Class constructed." << std::endl;
-}
-
-int32_t	Fixed::DoubleTo32(double nbr) {
-	setRawBits(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
-	return(nbr * double(1 <<  n_bits) + (nbr >= 0 ? 0.5 : -0.5));
-}
-
-double	Fixed::FixedValue() {
-	return (double(value) / double(1<< n_bits));
+Fixed::Fixed(const int nbr) {
+	value = nbr * (1 << n_bits);
+	value_f = (float)((float)value / (1 << n_bits));
+	std::cout << "Class constructed." << std::endl;
 }
 
 int		Fixed::getRawBits(void) const {
@@ -42,11 +27,47 @@ void	Fixed::setRawBits(int const raw){
 	value = raw;
 }
 
-float	Fixed::toFloat(void) const{
-	
-	return(float(double(value) / double(1<< n_bits)));
+
+float	Fixed::toFloat(void)const {
+	return ((float)value / (1 << n_bits));
 }
 
 int		Fixed::toInt(void) const{
-	return(roundf(value_d));
+	return(roundf(value_f));
+}
+
+Fixed	Fixed::min(Fixed &a, Fixed &b){
+	if (a.value_f < b.value_f) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
+Fixed	Fixed::min(const Fixed &a, const Fixed &b) {
+	if (a.value_f < b.value_f) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
+Fixed	Fixed::max(Fixed &a, Fixed &b){
+	if (a.value_f > b.value_f) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
+Fixed	Fixed::max(const Fixed &a, const Fixed &b) {
+	if (a.value_f > b.value_f) {
+		return  a;
+	}
+	else {
+		return  b;
+	}
 }

@@ -1,29 +1,26 @@
 NAME = fixed
 
-SRCS =	main.cpp	\
-		Fixed.cpp
+CPPFLAGS = -Wall -Werror -Wextra -Fsanitize=address
+RM = rm -f
+
+SRCS =	Fixed.cpp		\
+			Overload.cpp	\
+			main.cpp
+
+OBJECTS = $(SOURCES:.cpp=.o)
 
 
-OBJS = $(SRCS:.c=.o)
+all : $(NAME)
 
-CPPFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
+$(NAME):
+	g++ $(CPPFLAGS) $(SRCS) -o $(NAME)
 
-all	:	$(NAME)
-
-
-$(NAME)	:	$(OBJS)
-	@c++ -o $(NAME) $(OBJS) $(CFLAGS)
-
-%.o	:	%.c
-	@c++ $(CPPFLAGS)  -c $^ -I./ -o $@ 
-	
-
-clean	:
-	@rm -f $(OBJS)
+clean:
+		$(RM) $(OBJECTS)
+fclean: clean
+		$(RM) $(NAME)
 		
-fclean	:	clean
-	@rm -f $(NAME)
+re: fclean $(NAME)
 
-re			:	fclean all
-
-.PHONY		:	all clean fclean re bonus
+rebonus:	fclean all
+.PHONY:		all clean fclean re

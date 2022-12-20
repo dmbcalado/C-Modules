@@ -1,13 +1,12 @@
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#define FIXED_HPP
 
-# include <cmath>
-# include <fstream>
-# include <iostream>
-# include <string>
-# include <cstring>
-# include <bits/stdc++.h>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <bits/stdc++.h>
 
 class Fixed {
 
@@ -16,7 +15,6 @@ public:
 	// Constructors :
 	Fixed();
 	Fixed(const float nbr);
-	Fixed(const double nbr);
 	Fixed(int nbr);
 
 	// Copy Constructor :
@@ -32,12 +30,7 @@ public:
 	}
 
 	// Copy Assignment operator :
-	Fixed &operator = (const Fixed& old) {
-		value = old.value;
-		value_d = old.value_d;
-		std::cout << "Copy assignement operator activated." << std::endl;
-		return *this;
-	}
+	Fixed &operator = (const Fixed& old);
 
 	//Member functions :
 	//Bit operations :
@@ -57,6 +50,3 @@ private:
 	double		value_d;
 	static const int n_bits = 8;
 } ;
-
-
-#endif
