@@ -1,5 +1,5 @@
 
-# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
 
 void	atack_moment(ClapTrap& Attacker, ClapTrap& Defenser) {
 	int	ADamage = 1 + rand() % 5;
@@ -22,8 +22,8 @@ void	printHP(ClapTrap& Hero, ClapTrap& Vilan) {
 int	main(void)
 {
 	int	random, repair;
-	ClapTrap	Hero("Jordan Peterson");
-	ClapTrap	Vilan("Cancel Culture");
+	ScavTrap	Hero("Jordan Peterson");
+	ScavTrap	Vilan("Cancel Culture");
 
 	usleep(1);
 	while(!Hero.checker() && !Vilan.checker()) {

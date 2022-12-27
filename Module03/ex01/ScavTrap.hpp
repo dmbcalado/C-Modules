@@ -1,6 +1,6 @@
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include <unistd.h>
 # include <string>
@@ -10,12 +10,14 @@
 # include <iostream>
 # include <bits/stdc++.h>
 
-class ClapTrap {
+# include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap {
 
 public:
 
 	// Default Constructor with nam as input given
-	ClapTrap(std::string nam);
+	ScavTrap() : ClapTrap(std::string nam);
 
 	// Member functions of ClapTrap
 	void		takeDamage(unsigned int amount);
@@ -32,14 +34,7 @@ public:
 	std::string	targets_name();
 
 	// Default Destructor
-	~ClapTrap();
-
-private:
-	std::string Name;
-	int	repair;
-	int	Att_Damage = 0;
-	int	Hit_Points = 10;
-	int	Energy_Points = 10;
+	~ScavTrap();
 
 } ;
 
