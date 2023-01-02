@@ -16,7 +16,6 @@ public:
 
 	// Default Constructor with nam as input given
 	ClapTrap(std::string nam);
-
 	// Member functions of ClapTrap
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);

@@ -1,5 +1,5 @@
 
-# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
 std::string	attack_moment(ClapTrap& Defenser) {
 	std::string target = Defenser.targets_name();
@@ -21,7 +21,7 @@ int	main(void)
 {
 	int			random, repair;
 	std::string	targets_name;
-	ScavTrap	Hero("Jordan Peterson");
+	FragTrap	Hero("Jordan Peterson");
 	ScavTrap	Vilan("Cancel Culture");
 
 	usleep(1);
@@ -35,7 +35,7 @@ int	main(void)
 			targets_name = attack_moment(Hero);
 			Vilan.attack(targets_name);
 		}
-		else if (random < 90) {
+		else if (random < 80) {
 			repair = 1 + rand() % 100;
 			if (repair > 50) {
 				Hero.repairment();
@@ -44,8 +44,11 @@ int	main(void)
 				Vilan.repairment();
 			}
 		}
+		else if (random < 90){
+			Vilan.guardGate();
+		}
 		else {
-			Hero.guardGate();
+			Hero.highfiveguys();
 		}
 		sleep(1);
 		printHP(Hero, Vilan);
