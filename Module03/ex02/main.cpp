@@ -9,7 +9,7 @@ std::string	attack_moment(ClapTrap& Defenser) {
 
 void	printHP(ClapTrap& Hero, ClapTrap& Vilan) {
 	std::cout << std::endl;
-	std::cout << "Hero :   " << Hero.ret_Hitpoints() << " HP";
+	std::cout << "Hero : " << Hero.ret_Hitpoints() << " HP";
 	std::cout << " | " << Hero.ret_Energypoints() << " EP";
 	std::cout << std::endl;
 	std::cout << "Vilan : " << Vilan.ret_Hitpoints() << " HP";
