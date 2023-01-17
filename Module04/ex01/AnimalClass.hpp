@@ -48,7 +48,7 @@ public:
 	// Parameterized Constructor
 	WrongAnimal(std::string type);
 	// Member functions of Animal
-	void	makeSound() const; // !virtual!
+	virtual void	makeSound() const; // !virtual!
 	std::string	getType() const;
 	// Default Destructor
 	~WrongAnimal();
