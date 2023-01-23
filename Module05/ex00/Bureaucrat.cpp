@@ -11,7 +11,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade) {
 	Name = name;
 	if (grade > 0 && grade < 150) {
 		Grade = grade;
-		std::cout << "Bureaucrat " << Name << " was created." << std::endl;
 	}
 	else if (grade < 1) {
 		throw(Bureaucrat::GradeTooHighException());
@@ -29,6 +28,12 @@ Bureaucrat::~Bureaucrat(){
 	std::cout << std::endl;
 }
 
+std::ostream& operator<<(std::ostream& stream, Bureaucrat& Bc) {
+	stream << "Name : " << Bc.getName() << std::endl;
+	stream << "Grade : " << Bc.getGrade() << "\n" << std::endl;
+	return stream;
+}
+
 
 std::string	Bureaucrat::getName() {
 	return Name;
@@ -41,9 +46,10 @@ int	Bureaucrat::getGrade() {
 void	Bureaucrat::IncreaseGrade() {
 	if (Grade > 1) {
 		Grade--;
-		std::cout << "Bureaucrat" << Name << "has climbed the letter." << std::endl;
+		std::cout << "Bureaucrat " << Name << " has climbed the letter." << std::endl;
 	}
 	else {
+		std::cout << "Bureaucrat " << Name;
 		throw(Bureaucrat::GradeTooHighException());
 	}
 }
@@ -51,19 +57,20 @@ void	Bureaucrat::IncreaseGrade() {
 void	Bureaucrat::DecreaseGrade() {
 	if (Grade < 150) {
 		Grade++;
-		std::cout << "Bureaucrat" << Name << "has lower in the ladder." << std::endl;
+		std::cout << "Bureaucrat " << Name << " has lower in the ladder." << std::endl;
 	}
 	else {
+		std::cout << "Bureaucrat " << Name;
 		throw(Bureaucrat::GradeTooHighException());
 	}
 }
 
-const char	*Bureaucrat::GradeTooHighException::what() const throw(int) {
-	std::cout <<"He already is the best. No way to climb being the Top G.\n" << std::endl;
+const char	*Bureaucrat::GradeTooHighException::what() const throw() {
+	std::cout << " is already the best. No way to climb being the Top G.\n" << std::endl;
 	return ("He already is the best");
 }
 
-const char	*Bureaucrat::GradeTooLowException::what() const throw(int) {
-	std::cout << "He already is the worst. Time to fire him.\n" << std::endl;
+const char	*Bureaucrat::GradeTooLowException::what() const throw() {
+	std::cout << " is the worst already. Time to fire him.\n" << std::endl;
 	return ("He already is the worst");
 }

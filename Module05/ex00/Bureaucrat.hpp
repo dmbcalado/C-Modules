@@ -20,6 +20,13 @@ public:
 	Bureaucrat(std::string name, int grade);
 	~Bureaucrat();
 
+	Bureaucrat &operator = (const Bureaucrat& old) {
+		Name = old.Name;
+		Grade = old.Grade;
+		std::cout << "Copy assignement operator activated." << std::endl;
+		return *this;
+	}
+
 	// Getters
 	int			getGrade();
 	std::string	getName();
@@ -28,15 +35,14 @@ public:
 	void	IncreaseGrade();
 	void	DecreaseGrade();
 
-
-	class GradeTooHighException: public std::exception {
+	class GradeTooHighException : public std::exception {
 		public:
-			virtual const char* what() const throw(int);
+			virtual const char* what() const throw();
 	} ;
 
 	class GradeTooLowException : public std::exception {
 		public:
-			virtual const char* what() const throw(int);
+			virtual const char* what() const throw();
 	} ;
 
 private:
@@ -44,5 +50,7 @@ private:
 	int			Grade;
 
 } ;
+
+std::ostream &operator<<(std::ostream &stream, Bureaucrat &Bc);
 
 #endif
