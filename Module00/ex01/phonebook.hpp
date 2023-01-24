@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 20:04:41 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/12/07 21:43:03 by dmendonc         ###   ########.fr       */
+/*   Updated: 2023/01/24 21:50:06 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include <stdlib.h>
 # include <iostream>
 # include <string>
 # include <cstring>

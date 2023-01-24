@@ -1,36 +1,42 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/24 21:45:25 by ratinhosujo       #+#    #+#              #
+#    Updated: 2023/01/24 21:49:35 by ratinhosujo      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+GPP = c++
+
 NAME = phonebook
 
-SRCS =	phonebook.cpp	\
-		pnbook_aux.cpp	\
-		getters.cpp		\
-		main.cpp
+SRCS = getters.cpp \
+       phonebook.cpp \
+       pnbook_aux.cpp \
+       main.cpp
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS: .cpp = .o)
 
-CPPFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98
 
-all	:	$(NAME)
+all :	$(NAME)
 
+$(NAME): $(OBJS)
+	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	@echo	"\033[102m\033[1mphonebook created\033[0m"
 
-$(NAME)	:	$(OBJS)
-	@c++ -o $(NAME) $(OBJS) $(CFLAGS)
+clean :
+	@rm -rf *.o
+	@echo	"Object Files Deleted"
 
-%.o	:	%.c
-	@c++ $(CPPFLAGS)  -c $^ -I./ -o $@ 
-	
+fclean :	clean
+	@rm -rf $(NAME)
+	@echo	"\033[101m\033[1mphonebook deleted\033[0m"
 
-clean	:
-	@rm -f $(OBJS)
-	@echo	""
-	@echo	"$$ Object Files Deleted"
-	@echo	""
-		
-fclean	:	clean
-	@rm -f $(NAME)
-	@echo	""
-	@echo	"$$ ./minishell Deleted"
-	@echo	""
+re :	fclean all
 
-re			:	fclean all
-
-.PHONY		:	all clean fclean re bonus
+.PHONY :	all clean fclean re bonus
