@@ -21,19 +21,35 @@ void	PhoneBook::add(void)
 	PhoneBook::get_last_name();
 	PhoneBook::get_nickname();
 	PhoneBook::get_d_secret();
+	PhoneBook::get_phone_nbr();
 }
 
 void	PhoneBook::search(void)
 {
-		std::cout << " | ";
+		std::cout << "|";
 		print_str(first_name);
-		std::cout << " | ";
+		std::cout << "|";
+		print_str(first_name);
+		std::cout << "|";
 		print_str(last_name);
-		std::cout << " | ";
+		std::cout << "|";
 		print_str(nickname);
-		std::cout << " | ";
-		print_str(dark_secret);
-		std::cout << " | ";
+		std::cout << "|";
+		std::cout << std::endl;
+}
+
+void	PhoneBook::deep_search(void)
+{
+		std::cout << "first name   : ";
+		std::cout << first_name << std::endl;
+		std::cout << "last name    : ";
+		std::cout << last_name << std::endl;
+		std::cout << "nickname     : ";
+		std::cout << nickname << std::endl;
+		std::cout << "dark secret  : ";
+		std::cout << dark_secret << std::endl;
+		std::cout << "phone number : ";
+		std::cout << phone_number << std::endl;
 		std::cout << std::endl;
 }
 

@@ -4,7 +4,7 @@
 void	print_start(void)
 {
 	std::cout << std::endl;
-	std::cout << "\033[103;34m\033[1mHello and welcome to my small Phonebook.		" << std::endl;
+	std::cout << "\033[103;34m\033[1mHello and welcome to my small Phonebook." << std::endl;
 	std::cout << std::endl;
 	std::cout << "You will be able to add up to 8 contacts, along with the fields required." << std::endl;
 	std::cout << std::endl;

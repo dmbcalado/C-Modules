@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
+#    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 21:45:25 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/01/24 21:49:35 by ratinhosujo      ###   ########.fr        #
+#    Updated: 2023/01/25 15:57:16 by dmendonc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = getters.cpp \
 
 OBJS = $(SRCS: .cpp = .o)
 
-CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98
+CPPFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -std=c++98
 
 all :	$(NAME)
 
