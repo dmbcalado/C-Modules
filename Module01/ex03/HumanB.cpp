@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 13:29:32 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/26 14:51:35 by dmendonc         ###   ########.fr       */
+/*   Created: 2023/01/27 04:22:24 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/01/28 15:11:15 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-int main(void)
-{
-	int	N = 10;
-	Zombie *zombiehorde = zombieHorde(N, "Mordido");
-	
-	std::cout << std::endl;
-	for (int i = 0; i < N; i++){
-		std::cout << i << ": ";
-		zombiehorde[i].announce();
+HumanB::HumanB(std::string name) {
+		Name = name;
+}
+
+void HumanB::setWeapon(Weapon &new_weapon) {
+		weapon = new_weapon;
+}
+
+void	HumanB::attack() {
+	if (weapon.getType().empty() == false) {
+		std::cout << "\033[31m" << Name << " attacks with their " << weapon.getType() << "\033[0m" << std::endl;
 	}
-	std::cout << std::endl;
-	delete[] zombiehorde;
-	return 0;
+	else {
+		std::cout << Name << "attacks with his fists." << std::endl;
+	}
 }

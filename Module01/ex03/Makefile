@@ -5,29 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/24 21:45:25 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/01/26 13:29:12 by dmendonc         ###   ########.fr        #
+#    Created: 2023/01/27 16:42:58 by ratinhosujo       #+#    #+#              #
+#    Updated: 2023/01/28 14:57:23 by dmendonc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 GPP = c++
 
-NAME = Zombie
+NAME = war
 
-SRCS = Zombie.cpp \
-       newZombie.cpp \
-       randomChump.cpp \
-       main.cpp
+SRCS = main.cpp   \
+       Weapon.cpp \
+       HumanA.cpp \
+       HumanB.cpp \
 
 OBJS = $(SRCS: .cpp = .o)
 
-CPPFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98
 
 all :	$(NAME)
 
 $(NAME): $(OBJS)
 	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
-	@echo	"\033[102m\033[1mZombie created\033[0m"
+	@echo	"\033[102m\033[1mWar created\033[0m"
 
 clean :
 	@rm -rf *.o
@@ -35,7 +35,7 @@ clean :
 
 fclean :	clean
 	@rm -rf $(NAME)
-	@echo	"\033[101m\033[1mZombie deleted\033[0m"
+	@echo	"\033[101m\033[1mWar deleted\033[0m"
 
 re :	fclean all
 

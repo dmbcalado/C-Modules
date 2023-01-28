@@ -5,35 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 13:29:32 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/26 13:50:02 by dmendonc         ###   ########.fr       */
+/*   Created: 2023/01/27 16:33:46 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/01/28 15:11:27 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-int main(void)
+int main()
 {
-	Zombie *zombie1 = newZombie("Mordido 1");
-	Zombie *zombie2 = newZombie("Mordido 2");
-	Zombie *zombie3 = newZombie("Mordido 3");
-
-	zombie1->announce();
-	zombie2->announce();
-	zombie3->announce();
-
-	std::cout << std::endl;
-	delete zombie1;
-	
-	randomChump("Mordido 4");
-	std::cout << std::endl;
-	randomChump("Mordido 5");
-	std::cout << std::endl;
-	randomChump("Mordido 6");
-	std::cout << std::endl;
-	
-	delete zombie2;
-	delete zombie3;
-
-	return 0;
+	{
+	Weapon club = Weapon("crude spiked club");
+	HumanA bob("Bob", club);
+	bob.attack();
+	club.setType("some other type of club");
+	bob.attack();
+	}
+	{
+	Weapon club = Weapon("crude spiked club");
+	HumanB jim("Jim");
+	jim.setWeapon(club);
+	jim.attack();
+	club.setType("some other type of club");
+	jim.attack();
+	}
+return 0;
 }

@@ -1,24 +1,26 @@
-
-/* Create a program that takes three parameters in the following order: a filename and
-two strings, s1 and s2.
-
-It will open the file <filename> and copies its content into a new file
-<filename>.replace, replacing every occurrence of s1 with s2. */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/28 17:29:20 by dmendonc          #+#    #+#             */
+/*   Updated: 2023/01/28 18:03:10 by dmendonc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 # include "Harl.hpp"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	if (argc == 4)
-	{
-		Class op;
-		op.get_strings(argv[2], argv[3]);
-		op.open_files(argv[1]);
-		op.write_str_fd();
-	}
-	else
-	{
-		std::cout << "Wrong parameters number. \n You should give at least 3 parameters. \nExiting" << std::endl;
-	}
+	Harl Minina;
+
+	Minina.start_cases();
+	Minina.complain("debug");
+	Minina.complain("info");
+	Minina.complain("warning");
+	Minina.complain("error");
+	Minina.complain("nada");
 	return (0);
 }

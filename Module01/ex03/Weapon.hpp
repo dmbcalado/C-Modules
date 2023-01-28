@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 12:58:53 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/26 13:48:11 by dmendonc         ###   ########.fr       */
+/*   Created: 2023/01/27 04:11:40 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/01/27 16:52:32 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 # include <stdlib.h>
 # include <iostream>
 # include <string>
 # include <cstring>
-# include <new>
 
-class Zombie
-{
-	public:
 
-	//	Constructor & Destructor
-	Zombie(std::string name);
-	~Zombie();
-	
-	//	Functions
-	void	announce(void);
+class Weapon {
 
-	private:
-	
-	std::string Name;
+public:
+
+	Weapon();
+	Weapon(std::string weaponType);
+
+	std::string getType();
+	void setType(std::string newType);
+
+private:
+	std::string type;
+
 } ;
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
 
 #endif

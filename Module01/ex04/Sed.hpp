@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 13:29:32 by dmendonc          #+#    #+#             */
-/*   Updated: 2023/01/26 14:51:35 by dmendonc         ###   ########.fr       */
+/*   Created: 2023/01/28 15:16:29 by dmendonc          #+#    #+#             */
+/*   Updated: 2023/01/28 16:34:03 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef SED_HPP
+# define SED_HPP
 
-int main(void)
-{
-	int	N = 10;
-	Zombie *zombiehorde = zombieHorde(N, "Mordido");
-	
-	std::cout << std::endl;
-	for (int i = 0; i < N; i++){
-		std::cout << i << ": ";
-		zombiehorde[i].announce();
-	}
-	std::cout << std::endl;
-	delete[] zombiehorde;
-	return 0;
-}
+# include <stdlib.h>
+# include <iostream>
+# include <string>
+# include <cstring>
+# include <fstream>
+
+#endif

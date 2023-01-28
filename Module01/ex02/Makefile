@@ -1,27 +1,39 @@
-NAME = brain
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/26 14:52:38 by dmendonc          #+#    #+#              #
+#    Updated: 2023/01/26 14:54:03 by dmendonc         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS =	main.cpp
+GPP = c++
 
-OBJS = $(SRCS:.c=.o)
+NAME = Zombie
 
-CPPFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
+SRCS = main.cpp
 
-all	:	$(NAME)
+OBJS = $(SRCS: .cpp = .o)
 
+CPPFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -std=c++98
 
-$(NAME)	:	$(OBJS)
-	@c++ -o $(NAME) $(OBJS) $(CFLAGS)
+all :	$(NAME)
 
-%.o	:	%.c
-	@c++ $(CPPFLAGS)  -c $^ -I./ -o $@ 
-	
+$(NAME): $(OBJS)
+	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	@echo	"\033[102m\033[1mBrain created\033[0m"
 
-clean	:
-	@rm -f $(OBJS)
-		
-fclean	:	clean
-	@rm -f $(NAME)
+clean :
+	@rm -rf *.o
+	@echo	"Object Files Deleted"
 
-re			:	fclean all
+fclean :	clean
+	@rm -rf $(NAME)
+	@echo	"\033[101m\033[1mBrain deleted\033[0m"
 
-.PHONY		:	all clean fclean re bonus
+re :	fclean all
+
+.PHONY :	all clean fclean re bonus
