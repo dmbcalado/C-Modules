@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 04:14:05 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/01/27 17:05:12 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/01/28 19:42:34 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 
 private:
 	std::string Name;
-	Weapon		weapon;
+	Weapon		*weapon;
 };
 
 #endif

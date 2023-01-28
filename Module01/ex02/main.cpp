@@ -17,7 +17,7 @@ int	main(void)
 	std::cout << "Value of the string variable:" << std::endl; 
 	std::cout << str << std::endl;
 	std::cout << "Value pointed to by stringPTR:" << std::endl; 
-	std::cout << *stringPTR << std::endl;
+	std::cout << stringPTR << std::endl;
 	std::cout << "Value pointed to by stringREF:" << std::endl; 
 	std::cout << stringREF << std::endl << std::endl;
 }
