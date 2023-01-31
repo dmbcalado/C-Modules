@@ -21,14 +21,18 @@ public:
 	FragTrap(std::string nam);
 
 	// Member functions of FragTrap
-	void		attack(const std::string& target);
+	void		atack(const std::string& target);
 	void		highfiveguys();
-	// extra functions to smoth out the code
-	std::string	targets_name();
 
 	// Default Destructor
 	~FragTrap();
 } ;
 
+void	atack_moment(FragTrap &atacker, FragTrap &Defenser);
+void	atack_moment(ScavTrap &Atacker, FragTrap& Defenser);
+void	atack_moment(FragTrap &Atacker, ScavTrap &Defenser);
+void	printHP(FragTrap &Hero, FragTrap &Vilan);
+void	printHP(FragTrap& Hero, ScavTrap& Vilan);
+void	printHP(FragTrap& Hero, FragTrap& Vilan);
 
 #endif

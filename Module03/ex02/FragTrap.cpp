@@ -1,7 +1,7 @@
 
 # include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string nam) : ClapTrap::ClapTrap(nam){
+FragTrap::FragTrap(std::string nam) : ClapTrap::ClapTrap(nam, 30){
 	setEP(100);
 	setHP(100);
 	setDamage(30);
@@ -14,15 +14,15 @@ FragTrap::~FragTrap(){
 	std::cout << std::endl;
 }
 
-// Attack : -1 EP
-void	FragTrap::attack(const std::string& target) {
+// atack : -1 EP
+void	FragTrap::atack(const std::string& target) {
 	setEP(-1);
-	std::cout << "FragTrap " << ret_Name() << " punches! ";
-	std::cout << target << ", causing " << ret_AD();
+	std::cout << "FragTrap " << ret_Name() << " shoot ";
+	std::cout << target << "! causing " << ret_AD();
 	std::cout << " AD!" << std::endl;
 }
 
 void	FragTrap::highfiveguys(){
-	std::cout << "FragTrap" << ret_Name() << " highfives";
-	std::cout << " da boys, they all happy." << std::endl;
+	std::cout << "FragTrap " << ret_Name() << " highfives";
+	std::cout << " the boys, they all happy." << std::endl;
 }

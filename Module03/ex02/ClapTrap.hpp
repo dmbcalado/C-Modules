@@ -16,15 +16,19 @@ public:
 
 	// Default Constructor with nam as input given
 	ClapTrap(std::string nam);
+
+	// Parameterized Constructor to set ScavTrap
+	ClapTrap(std::string name, int AD);
+
 	// Member functions of ClapTrap
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
-	void		attack(const std::string& target);
+	void		atack(const std::string& target);
 
 	// extra functions to smoth out the code
 	void		repairment();
 	void		setHP(unsigned int HP);
-	void		setEP(unsigned int EP);
+	void		setEP(int EP);
 	void		setDamage(unsigned int ADamage);
 	int			checker();
 	int			ret_AD();
@@ -34,16 +38,15 @@ public:
 	std::string	targets_name();
 
 	// Default Destructor
-	virtual ~ClapTrap();
+	~ClapTrap();
 
 private:
 	std::string Name;
 	int	repair;
-	int	Att_Damage = 0;
-	int	Hit_Points = 10;
-	int	Energy_Points = 10;
+	int	A_Damage;
+	int	Hit_Points;
+	int	Energy_Points;
 
 } ;
-
 
 #endif

@@ -20,7 +20,7 @@ public:
 	// Member functions of ClapTrap
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
-	void		attack(const std::string& target);
+	void		atack(const std::string& target);
 
 	// extra functions to smoth out the code
 	void		repairment();
@@ -37,11 +37,14 @@ public:
 private:
 	std::string Name;
 	int	repair;
-	int	Att_Damage = 0;
-	int	Hit_Points = 10;
-	int	Energy_Points = 10;
+	int	A_Damage;
+	int	Hit_Points;
+	int	Energy_Points;
 
 } ;
+
+void	atack_moment(ClapTrap& atacker, ClapTrap& Defenser);
+void	printHP(ClapTrap& Hero, ClapTrap& Vilan);
 
 
 #endif

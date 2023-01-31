@@ -4,6 +4,9 @@
 // ------------- Constructor and Destructor -------------
 ClapTrap::ClapTrap(std::string nam) {
 	Name = nam;
+	A_Damage = 0;
+	Hit_Points = 10;
+	Energy_Points = 10;
 	std::cout << "ClapTrap "<< nam << " created." ;
 	std::cout << std::endl;
 }
@@ -31,11 +34,11 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	Energy_Points--;
 }
 
-// Attack : -1 EP
-void	ClapTrap::attack(const std::string& target) {
+// atack : -1 EP
+void	ClapTrap::atack(const std::string& target) {
 	Energy_Points--;
-	std::cout << "ClapTrap " << Name << " attacks ";
-	std::cout << target << ", causing " << Att_Damage;
+	std::cout << "ClapTrap " << Name << " atacks ";
+	std::cout << target << ", causing " << A_Damage;
 	std::cout << " AD!" << std::endl;
 }
 
@@ -51,7 +54,7 @@ void	ClapTrap::repairment() {
 }
 
 void	ClapTrap::setDamage(unsigned int ADamage){
-	Att_Damage = ADamage;
+	A_Damage = ADamage;
 }
 
 int		ClapTrap::checker() {

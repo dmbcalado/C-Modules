@@ -2,9 +2,21 @@
 #include "ClapTrap.hpp"
 
 // ------------- Constructor and Destructor -------------
-ClapTrap::ClapTrap(std::string nam) {
-	Name = nam;
-	std::cout << "ClapTrap "<< nam << " created." ;
+ClapTrap::ClapTrap(std::string name) {
+	Name = name;
+	A_Damage = 0;
+	Hit_Points = 10;
+	Energy_Points = 10;
+	std::cout << "ClapTrap "<< name << " created." ;
+	std::cout << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name, int AD) {
+	Name = name;
+	A_Damage = AD;
+	Hit_Points = 100;
+	Energy_Points = 50;
+	std::cout << "ClapTrap "<< name << " created." ;
 	std::cout << std::endl;
 }
 
@@ -25,17 +37,14 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 // Repair : +<amount> HP | -1 EP
 void	ClapTrap::beRepaired(unsigned int amount) {
 	Hit_Points += amount;
-	if (Hit_Points > 100) {
-		Hit_Points = 100;
-	}
 	Energy_Points--;
 }
 
-// Attack : -1 EP
-void	ClapTrap::attack(const std::string& target) {
+// atack : -1 EP
+void	ClapTrap::atack(const std::string& target) {
 	Energy_Points--;
-	std::cout << "ClapTrap " << Name << " attacks ";
-	std::cout << target << ", causing " << Att_Damage;
+	std::cout << "ClapTrap " << Name << " atacks ";
+	std::cout << target << ", causing " << A_Damage;
 	std::cout << " AD!" << std::endl;
 }
 
@@ -43,7 +52,7 @@ void	ClapTrap::attack(const std::string& target) {
 
 void	ClapTrap::repairment() {
 	std::cout << Name << " found a potion." << std::endl;
-	repair = 1 + rand() % 10;
+	repair = 20;
 	this->beRepaired(repair);
 	std::cout << "The potion has " << repair << " HP." << std::endl;
 	std::cout << "Now " << Name << " has " << this->ret_Hitpoints();
@@ -51,14 +60,14 @@ void	ClapTrap::repairment() {
 }
 
 void	ClapTrap::setDamage(unsigned int ADamage){
-	Att_Damage = ADamage;
+	A_Damage = ADamage;
 }
 
 void	ClapTrap::setHP(unsigned int HP){
 	Hit_Points = HP;
 }
 
-void	ClapTrap::setEP(unsigned int EP){
+void	ClapTrap::setEP(int EP){
 	if (EP == -1 && Energy_Points != 0){
 		Energy_Points--;
 	}
@@ -79,7 +88,7 @@ std::string	ClapTrap::targets_name() {
 }
 
 int	ClapTrap::ret_AD(){
-	return(Att_Damage);
+	return(A_Damage);
 }
 
 int	ClapTrap::ret_Hitpoints() {

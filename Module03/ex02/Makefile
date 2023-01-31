@@ -1,31 +1,43 @@
-NAME = fixed
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/31 15:01:42 by ratinhosujo       #+#    #+#              #
+#    Updated: 2023/01/31 16:20:22 by ratinhosujo      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS =	main.cpp	 \
-		ClapTrap.cpp \
-		ScavTrap.cpp \
-		FragTrap.cpp \
+GPP = c++
 
+NAME = fragTrap
 
-OBJS = $(SRCS:.c=.o)
+SRCS = ClapTrap.cpp \
+       ScavTrap.cpp \
+	   FragTrap.cpp \
+       Auxiliar.cpp \
+       main.cpp
 
-CPPFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
+OBJS = $(SRCS: .cpp = .o)
 
-all	:	$(NAME)
+CPPFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -std=c++98
 
+all :	$(NAME)
 
-$(NAME)	:	$(OBJS)
-	@c++ -o $(NAME) $(OBJS) $(CFLAGS)
+$(NAME): $(OBJS)
+	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	@echo	"\033[102m\033[1mFragTrap created\033[0m"
 
-%.o	:	%.c
-	@c++ $(CPPFLAGS)  -c $^ -I./ -o $@ 
-	
+clean :
+	@rm -rf *.o
+	@echo	"Object Files Deleted"
 
-clean	:
-	@rm -f $(OBJS)
-		
-fclean	:	clean
-	@rm -f $(NAME)
+fclean :	clean
+	@rm -rf $(NAME)
+	@echo	"\033[101m\033[1mFragTrap deleted\033[0m"
 
-re			:	fclean all
+re :	fclean all
 
-.PHONY		:	all clean fclean re bonus
+.PHONY :	all clean fclean re bonus

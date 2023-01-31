@@ -1,29 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/31 05:49:08 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/01/31 05:57:18 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 # include "ClapTrap.hpp"
 
-void	atack_moment(ClapTrap& Attacker, ClapTrap& Defenser) {
-	int	ADamage = 1 + rand() % 5;
-	std::string target = Defenser.targets_name();
-	Attacker.setDamage(ADamage);
-	Attacker.attack(target);
-	Defenser.takeDamage(ADamage);
-}
-
-void	printHP(ClapTrap& Hero, ClapTrap& Vilan) {
-	std::cout << std::endl;
-	std::cout << "Hero :   " << Hero.ret_Hitpoints() << " HP";
-	std::cout << " | " << Hero.ret_Energypoints() << " EP";
-	std::cout << std::endl;
-	std::cout << "Vilan : " << Vilan.ret_Hitpoints() << " HP";
-	std::cout << " | " << Vilan.ret_Energypoints() << " EP";
-	std::cout << std::endl << std:: endl;
-}
 
 int	main(void)
 {
 	int	random, repair;
-	ClapTrap	Hero("Jordan Peterson");
-	ClapTrap	Vilan("Cancel Culture");
+	ClapTrap	Hero("Benfica");
+	ClapTrap	Vilan("Sporting");
 
 	usleep(1);
 	while(!Hero.checker() && !Vilan.checker()) {

@@ -16,24 +16,19 @@ class ScavTrap : public ClapTrap {
 
 public:
 
-	// Default Constructor with nam as input given
-	ScavTrap(std::string nam) : ClapTrap(nam){
-	setEP(50);
-	setHP(100);
-	setDamage(20);
-	std::cout << "ScavTrap "<< nam << " created." ;
-	std::cout << std::endl;
-}
+	// Constructor
+	ScavTrap(std::string nam);
+
+	// Destructor
+	~ScavTrap();
 
 	// Member functions of ScavTrap
-	void		attack(const std::string& target);
-	void		guardGate();
-	// extra functions to smoth out the code
-	std::string	targets_name();
+	void	atack(const std::string& target);
+	void	guardGate();
 
-	// Default Destructor
-	~ScavTrap();
 } ;
 
+void	atack_moment(ScavTrap &atacker, ScavTrap &Defenser);
+void	printHP(ScavTrap &Hero, ScavTrap &Vilan);
 
 #endif
