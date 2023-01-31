@@ -16,22 +16,13 @@ public:
 	Fixed();
 
 	// Copy Constructor
-	Fixed(const Fixed &obj) {
-		value = obj.value;
-		std::cout << "Copy Constructor activated." << std::endl;
-	}
+	Fixed(const Fixed &obj);
 
 	// Copy Assignment operator
-	Fixed &operator = (const Fixed& old) {
-		value = old.value;
-		std::cout << "Copy assignement operator activated." << std::endl;
-		return *this;
-	}
+	Fixed &operator = (const Fixed& old);
 
 	//Destructor
-	~Fixed() {
-		std::cout << "Class destructed." << std::endl;
-	}
+	~Fixed();
 
 	//Fixing Double to 32 bits int, where 16 are for decimal.
 	void	DoubleTo32(double nbr);

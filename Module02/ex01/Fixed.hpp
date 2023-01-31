@@ -18,11 +18,7 @@ public:
 	Fixed(int nbr);
 
 	// Copy Constructor :
-	Fixed(const Fixed &obj) {
-		value = obj.value;
-		value_d = obj.value_d;
-		std::cout << "Copy constructor activated." << std::endl;
-	}
+	Fixed(const Fixed &obj);
 
 	//Destructor :
 	~Fixed() {
@@ -47,6 +43,6 @@ public:
 
 private:
 	int			value;
-	double		value_d;
+	float		value_f;
 	static const int n_bits = 8;
 } ;

@@ -1,29 +1,40 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/28 17:48:38 by dmendonc          #+#    #+#              #
+#    Updated: 2023/01/31 04:48:37 by ratinhosujo      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+GPP = c++
+
 NAME = fixed
 
-SRCS =	main.cpp	\
-		Fixed.cpp
+SRCS = main.cpp \
+       Fixed.cpp
 
+OBJS = $(SRCS: .cpp = .o)
 
-OBJS = $(SRCS:.c=.o)
+CPPFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -std=c++98
 
-CPPFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
+all :	$(NAME)
 
-all	:	$(NAME)
+$(NAME): $(OBJS)
+	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	@echo	"\033[102m\033[1mFixed created\033[0m"
 
+clean :
+	@rm -rf *.o
+	@echo	"Object Files Deleted"
 
-$(NAME)	:	$(OBJS)
-	@c++ -o $(NAME) $(OBJS) $(CFLAGS)
+fclean :	clean
+	@rm -rf $(NAME)
+	@echo	"\033[101m\033[1mFixed deleted\033[0m"
 
-%.o	:	%.c
-	@c++ $(CPPFLAGS)  -c $^ -I./ -o $@ 
-	
+re :	fclean all
 
-clean	:
-	@rm -f $(OBJS)
-		
-fclean	:	clean
-	@rm -f $(NAME)
-
-re			:	fclean all
-
-.PHONY		:	all clean fclean re bonus
+.PHONY :	all clean fclean re bonus
