@@ -7,44 +7,42 @@ Fixed	&Fixed::operator = (const Fixed& old) {
 	return *this;
 }
 
-Fixed	Fixed::operator++(int) {
-	Fixed tmp(this->value * toFloat());
+Fixed	&Fixed::operator++(int) {		// a++
 	this->value++;
-	return (tmp);
+	this->flag = 1;
+	return (*this);
 	}
 
-Fixed	&Fixed::operator++() {
-	this->value += 1;
+Fixed	&Fixed::operator++() {			// ++a
+	this->value++;
 	return (*this);
 }
 
-Fixed	Fixed::operator--(int) {
-	Fixed tmp(this->value * toFloat());
+Fixed	&Fixed::operator--(int) {		// a--
 	this->value--;
-	return (tmp);
+	this->flag = -1;
+	return (*this);
 }
 
-Fixed	&Fixed::operator--() {
+Fixed	&Fixed::operator--() {			// --a
 	this->value -= 1;
 	return (*this);
 }
 
-Fixed	Fixed::operator + (Fixed const &obj) {
-	return (this->value + obj.value);
+float	Fixed::operator + (Fixed const &obj) {
+	return (this->toFloat() + obj.toFloat());
 }
 
-Fixed	Fixed::operator - (Fixed const &obj) {
-	return (this->value - obj.value);
+float	Fixed::operator - (Fixed const &obj) {
+	return (this->toFloat() - obj.toFloat());
 }
 
-Fixed	Fixed::operator * (Fixed const &obj) {
-	float mult = this->value * obj.value;
-	return mult;
+float	Fixed::operator * (Fixed const &obj) {
+	return (this->toFloat() * obj.toFloat());
 }
 
-Fixed	Fixed::operator / (Fixed const &obj) {
-	float div = this->value / obj.value;
-	return div;
+float	Fixed::operator / (Fixed const &obj) {
+	return (this->toFloat() / obj.toFloat());
 	}
 
 bool	Fixed::operator < (Fixed const &obj) const {

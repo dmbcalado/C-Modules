@@ -4,19 +4,22 @@
 
 Fixed::Fixed() {
 		value = 0;
-		std::cout << "Class constructed." << std::endl;
+		flag = 0;
+		std::cout << "Default constructor called." << std::endl;
 }
 
 Fixed::Fixed(const float nbr) {
 	value = roundf(nbr * (1 << n_bits));
 	value_f = (float)((float)value / (1 << n_bits));
-	std::cout << "Class constructed." << std::endl;
+	flag = 0;
+	std::cout << "Float constructor called." << std::endl;
 }
 
 Fixed::Fixed(const int nbr) {
 	value = nbr * (1 << n_bits);
 	value_f = (float)((float)value / (1 << n_bits));
-	std::cout << "Class constructed." << std::endl;
+	flag = 0;
+	std::cout << "Int constructor called." << std::endl;
 }
 
 int		Fixed::getRawBits(void) const {
@@ -36,7 +39,7 @@ int		Fixed::toInt(void) const{
 	return(roundf(value_f));
 }
 
-Fixed	Fixed::min(Fixed &a, Fixed &b){
+Fixed	&Fixed::min(Fixed &a, Fixed &b){
 	if (a.value_f < b.value_f) {
 		return a;
 	}
@@ -45,7 +48,7 @@ Fixed	Fixed::min(Fixed &a, Fixed &b){
 	}
 }
 
-Fixed	Fixed::min(const Fixed &a, const Fixed &b) {
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b) {
 	if (a.value_f < b.value_f) {
 		return a;
 	}
@@ -54,7 +57,7 @@ Fixed	Fixed::min(const Fixed &a, const Fixed &b) {
 	}
 }
 
-Fixed	Fixed::max(Fixed &a, Fixed &b){
+Fixed	&Fixed::max(Fixed &a, Fixed &b){
 	if (a.value_f > b.value_f) {
 		return a;
 	}
@@ -63,11 +66,11 @@ Fixed	Fixed::max(Fixed &a, Fixed &b){
 	}
 }
 
-Fixed	Fixed::max(const Fixed &a, const Fixed &b) {
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b) {
 	if (a.value_f > b.value_f) {
-		return  a;
+		return a;
 	}
 	else {
-		return  b;
+		return b;
 	}
 }

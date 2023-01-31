@@ -26,7 +26,7 @@ public:
 	}
 
 	//Destructor :
-	~Fixed() {}
+	~Fixed(){}
 
 	// Copy Assignment operator :
 	Fixed &operator = (const Fixed& old);
@@ -38,18 +38,19 @@ public:
 
 	//Fixing the float :
 	// Converting fixed-point to float/int :
+	int		flag;
 	float	toFloat(void) const;
 	int		toInt(void) const;
 
 	Fixed	&operator++();
 	Fixed	&operator--();
-	Fixed	operator++(int);
-	Fixed	operator--(int);
+	Fixed	&operator++(int);
+	Fixed	&operator--(int);
 
-	Fixed	operator - (Fixed const &obj);
-	Fixed	operator + (Fixed const &obj);
-	Fixed	operator * (Fixed const &obj);
-	Fixed	operator / (Fixed const &obj);
+	float	operator - (Fixed const &obj);
+	float	operator + (Fixed const &obj);
+	float	operator * (Fixed const &obj);
+	float	operator / (Fixed const &obj);
 
 	bool	operator < (Fixed const &obj) const;
 	bool	operator > (Fixed const &obj) const;
@@ -58,10 +59,10 @@ public:
 	bool	operator == (Fixed const &obj) const;
 	bool	operator != (Fixed const &obj) const;
 
-	Fixed	min(Fixed &a, Fixed &b);
-	Fixed	max(Fixed &a, Fixed &b);
-	Fixed	min(const Fixed &a, const Fixed &b);
-	Fixed	max(const Fixed &a, const Fixed &b);
+	static Fixed	&min(Fixed &a, Fixed &b);
+	static Fixed	&max(Fixed &a, Fixed &b);
+	static const Fixed	&min(const Fixed &a, const Fixed &b);
+	static const Fixed	&max(const Fixed &a, const Fixed &b);
 
 private:
 	int			value;

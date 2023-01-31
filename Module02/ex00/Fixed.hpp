@@ -13,15 +13,12 @@ class Fixed {
 public:
 
 	// Default Constructor
-	Fixed() {
-		value = 0;
-		std::cout << "Class constructed." << std::endl;
-	}
+	Fixed();
 
 	// Copy Constructor
 	Fixed(const Fixed &obj) {
 		value = obj.value;
-		std::cout << "Copy constructor activated." << std::endl;
+		std::cout << "Copy Constructor activated." << std::endl;
 	}
 
 	// Copy Assignment operator
@@ -37,7 +34,7 @@ public:
 	}
 
 	//Fixing Double to 32 bits int, where 16 are for decimal.
-	int32_t	DoubleTo32(double nbr);
+	void	DoubleTo32(double nbr);
 	double	FixedNbr();
 
 	int		getRawBits(void) const;
