@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/02 23:27:35 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/02 23:27:52 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
@@ -16,16 +27,24 @@ class ScavTrap : public ClapTrap {
 
 public:
 
-	// Default Constructor with nam as input given
+	// Constructor
 	ScavTrap(std::string nam);
-	// Default Destructor
+
+	// Destructor
 	~ScavTrap();
 
-	// Member functions of ScavTrap
-	void		atack(const std::string& target);
-	void		guardGate();
-	// extra functions to smoth out the code
+	// Copy Constructor
+	ScavTrap(ScavTrap &obj);
 
-} ;
+	// Copy Assignment operator
+	ScavTrap &operator = (ScavTrap& obj);
+
+	// Member functions of ScavTrap
+	void	atack(const std::string& target);
+	void	guardGate();
+};
+
+void	atack_moment(ScavTrap &atacker, ScavTrap &Defenser);
+void	printHP(ScavTrap &Hero, ScavTrap &Vilan);
 
 #endif

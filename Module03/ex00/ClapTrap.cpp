@@ -1,7 +1,7 @@
 
 #include "ClapTrap.hpp"
 
-// ------------- Constructor and Destructor -------------
+// ------------- Constructors and Destructor -------------
 ClapTrap::ClapTrap(std::string nam) {
 	Name = nam;
 	A_Damage = 0;
@@ -11,10 +11,25 @@ ClapTrap::ClapTrap(std::string nam) {
 	std::cout << std::endl;
 }
 
-ClapTrap::~ClapTrap(){
+ClapTrap::ClapTrap(const ClapTrap &obj) {
+	Name = obj.Name;
+	A_Damage = obj.A_Damage;
+	Hit_Points = obj.Hit_Points;
+	Energy_Points = obj.Energy_Points;
+}
+
+ClapTrap &ClapTrap::operator = (const ClapTrap& obj) {
+	Name = obj.Name;
+	A_Damage = obj.A_Damage;
+	Hit_Points = obj.Hit_Points;
+	Energy_Points = obj.Energy_Points;
+}
+
+ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap "<< Name << " destroyed.";
 	std::cout << std::endl;
 }
+// -------------         Copy Constru          -------------
 
 // -------------         Actions          -------------
 // Take damage : -<amount> HP

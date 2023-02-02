@@ -17,8 +17,14 @@ class FragTrap : public ClapTrap {
 
 public:
 
-	// Default Constructor with nam as input given
+	// Constructor
 	FragTrap(std::string nam);
+
+	// Copy Constructor
+	FragTrap(FragTrap &obj);
+
+	// Copy Assignment operator
+	FragTrap &operator = (FragTrap& obj);
 
 	// Member functions of FragTrap
 	void		atack(const std::string& target);

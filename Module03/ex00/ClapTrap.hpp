@@ -17,6 +17,12 @@ public:
 	// Default Constructor with nam as input given
 	ClapTrap(std::string nam);
 
+	// Copy Constructor
+	ClapTrap(const ClapTrap &obj);
+
+	// Copy Assignment operator
+	ClapTrap &operator = (const ClapTrap& old);
+
 	// Member functions of ClapTrap
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);

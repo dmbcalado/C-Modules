@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/02 23:31:26 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/02 23:31:29 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
@@ -23,6 +34,20 @@ ClapTrap::ClapTrap(std::string name, int AD) {
 ClapTrap::~ClapTrap(){
 	std::cout << "ClapTrap "<< Name << " destroyed.";
 	std::cout << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &obj) {
+	Name = obj.Name;
+	A_Damage = obj.A_Damage;
+	Hit_Points = obj.Hit_Points;
+	Energy_Points = obj.Energy_Points;
+}
+
+ClapTrap &ClapTrap::operator = (const ClapTrap& obj) {
+	Name = obj.Name;
+	A_Damage = obj.A_Damage;
+	Hit_Points = obj.Hit_Points;
+	Energy_Points = obj.Energy_Points;
 }
 
 // -------------         Actions          -------------
@@ -74,6 +99,10 @@ void	ClapTrap::setEP(int EP){
 	else {
 		Energy_Points = EP;
 	}
+}
+
+void	ClapTrap::setName(std::string new_Name) {
+	Name = new_Name;
 }
 
 int		ClapTrap::checker() {

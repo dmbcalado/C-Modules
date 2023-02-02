@@ -14,11 +14,16 @@ class ClapTrap {
 
 public:
 
-	// Default Constructor with nam as input given
+	// Constructors
 	ClapTrap(std::string nam);
-
-	// Parameterized Constructor to set ScavTrap
 	ClapTrap(std::string name, int AD);
+
+	// Copy Constructor
+	ClapTrap(const ClapTrap &obj);
+
+	// Copy Assignment operator
+	ClapTrap &operator = (const ClapTrap& obj);
+
 
 	// Member functions of ClapTrap
 	void		takeDamage(unsigned int amount);
@@ -27,6 +32,7 @@ public:
 
 	// extra functions to smoth out the code
 	void		repairment();
+	void		setName(std::string new_Name);
 	void		setHP(unsigned int HP);
 	void		setEP(int EP);
 	void		setDamage(unsigned int ADamage);

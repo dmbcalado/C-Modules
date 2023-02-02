@@ -9,6 +9,20 @@ FragTrap::FragTrap(std::string nam) : ClapTrap::ClapTrap(nam, 30){
 	std::cout << std::endl;
 }
 
+FragTrap::FragTrap(FragTrap &obj) : ClapTrap::ClapTrap(obj.ret_Name(), 30) {
+	this->setDamage(obj.ret_AD());
+	this->setHP(obj.ret_Hitpoints());
+	this->setEP(obj.ret_Energypoints());
+}
+
+FragTrap &FragTrap::operator = (FragTrap& obj) {
+	this->setName(obj.ret_Name());
+	this->setDamage(obj.ret_AD());
+	this->setHP(obj.ret_Hitpoints());
+	this->setEP(obj.ret_Energypoints());
+	return *this;
+}
+
 FragTrap::~FragTrap(){
 	std::cout << "FragTrap "<< ret_Name() << " destroyed.";
 	std::cout << std::endl;

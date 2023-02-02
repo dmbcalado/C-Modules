@@ -25,6 +25,20 @@ ClapTrap::~ClapTrap(){
 	std::cout << std::endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &obj) {
+	Name = obj.Name;
+	A_Damage = obj.A_Damage;
+	Hit_Points = obj.Hit_Points;
+	Energy_Points = obj.Energy_Points;
+}
+
+ClapTrap &ClapTrap::operator = (const ClapTrap& obj) {
+	Name = obj.Name;
+	A_Damage = obj.A_Damage;
+	Hit_Points = obj.Hit_Points;
+	Energy_Points = obj.Energy_Points;
+}
+
 // -------------         Actions          -------------
 // Take damage : -<amount> HP
 void	ClapTrap::takeDamage(unsigned int amount) {
@@ -74,6 +88,10 @@ void	ClapTrap::setEP(int EP){
 	else {
 		Energy_Points = EP;
 	}
+}
+
+void	ClapTrap::setName(std::string new_Name) {
+	Name = new_Name;
 }
 
 int		ClapTrap::checker() {
