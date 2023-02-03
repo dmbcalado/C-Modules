@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 05:49:08 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/01/31 05:57:18 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/03 19:14:23 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 int	main(void)
 {
 	int	random, repair;
-	ClapTrap	Hero("Benfica");
+	ClapTrap	a("Benfica");
 	ClapTrap	Vilan("Sporting");
 
+	ClapTrap	Hero = a;
 	usleep(1);
 	while(!Hero.checker() && !Vilan.checker()) {
 		random = rand() % 100;

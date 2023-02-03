@@ -23,6 +23,8 @@ ClapTrap &ClapTrap::operator = (const ClapTrap& obj) {
 	A_Damage = obj.A_Damage;
 	Hit_Points = obj.Hit_Points;
 	Energy_Points = obj.Energy_Points;
+
+	return(*this);
 }
 
 ClapTrap::~ClapTrap() {
