@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 16:43:14 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 17:28:31 by ratinhosujo      ###   ########.fr       */
+/*   Created: 2023/02/04 16:03:16 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/04 17:12:21 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#ifndef CAT_HPP
+# define CAT_HPP
+
 # include "Animal.hpp"
-# include "Cat.hpp"
-# include "Dog.hpp"
+# include "Brain.hpp"
 
-int main()
-{
-	//const Animal* meta = new Animal();
-	const Animal* Puppy = new Dog();
-	const Animal* Passy = new Cat();
-	std::cout << Puppy->getType() << " : ";
-	Puppy->makeSound();
-	std::cout << Passy->getType() << " : ";
-	Passy->makeSound();
-	std::cout << "meta" << " : ";
-	//meta->makeSound();
-	
+class Cat : public Animal {
 
-	//delete meta;
-	delete Puppy;
-	delete Passy;
-	return 0;
-}
+public:
+	Cat();
+	void	makeSound() const;
+	virtual ~Cat();
+
+private:
+	Brain *AnimalBrain;
+} ;
+#endif

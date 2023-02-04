@@ -6,17 +6,20 @@
 #    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 15:01:42 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/01/31 18:11:30 by ratinhosujo      ###   ########.fr        #
+#    Updated: 2023/02/04 16:18:02 by ratinhosujo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 GPP = c++
 
-NAME = fragTrap
+NAME = animals
 
 SRCS = main.cpp \
-       Animals.cpp \
-       AnimalClass.cpp \
+       Dog.cpp \
+	   Cat.cpp \
+	   WrongCat.cpp \
+       Animal.cpp \
+	   WrongAnimal.cpp \
 
 OBJS = $(SRCS: .cpp = .o)
 

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 16:43:14 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 17:28:31 by ratinhosujo      ###   ########.fr       */
+/*   Created: 2023/02/04 16:05:16 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/04 16:21:00 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DOG_HPP
+# define DOG_HPP
+
 # include "Animal.hpp"
-# include "Cat.hpp"
-# include "Dog.hpp"
 
-int main()
-{
-	//const Animal* meta = new Animal();
-	const Animal* Puppy = new Dog();
-	const Animal* Passy = new Cat();
-	std::cout << Puppy->getType() << " : ";
-	Puppy->makeSound();
-	std::cout << Passy->getType() << " : ";
-	Passy->makeSound();
-	std::cout << "meta" << " : ";
-	//meta->makeSound();
-	
+class Dog : public Animal {
 
-	//delete meta;
-	delete Puppy;
-	delete Passy;
-	return 0;
-}
+public:
+	Dog();
+	void	makeSound() const;
+	virtual ~Dog();
+
+protected:
+	std::string type;
+} ;
+
+#endif

@@ -1,10 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/04 16:43:14 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/04 17:22:12 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "Animals.hpp"
+# include "Animal.hpp"
+# include "Cat.hpp"
+# include "Dog.hpp"
 
 int main()
 {
+	int N = 10;
 	const Animal **Vet = new const Animal*[10];
-	for (int i = 0; i < 10 ; i++) {
+	for (int i = 0; i < N ; i++) {
 		if (i % 2) {
 			Vet[i] = new Dog();
 		}
@@ -13,6 +27,10 @@ int main()
 		}
 		std::cout << std::endl;
 	}
+	for (int i = 0; i < N ; i++) {
+		Vet[i]->makeSound();
+	}
+	std::cout <<std::endl;
 	for (int i = 0; i < 10 ; i++) {
 		delete Vet[i];
 		std::cout << std::endl;
@@ -20,27 +38,3 @@ int main()
 	delete[] Vet;
 	return 0;
 }
-
-/* int main()
-{
-	const Animal* meta = new Animal();
-	const Animal* Puppy = new Dog();
-	const Animal* Passy = new Cat();
-	const WrongAnimal * Wassy = new WrongCat();
-	std::cout << Puppy->getType() << " : ";
-	Puppy->makeSound();
-	std::cout << Passy->getType() << " : ";
-	Passy->makeSound();
-	std::cout << Wassy->getType() << " : ";
-	Wassy->makeSound();
-	std::cout << "meta" << " : ";
-	meta->makeSound();
-	
-
-	delete meta;
-	delete Puppy;
-	delete Passy;
-	delete Wassy;
-	return 0;
-}
- */
