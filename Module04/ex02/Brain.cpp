@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:52:06 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 17:07:24 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/05 15:17:08 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ Brain::Brain() {
 		ideas[i] = temp;
 	}
 	std::cout << "The brain was created" << std::endl;
+}
+
+Brain::Brain(const Brain &obj) {
+	ideas = obj.ideas;
+	std::cout << "Brain Class created." ;
+}
+
+Brain &Brain::operator = (const Brain& obj) {
+	this->ideas = obj.ideas;
+	std::cout << "Brain Class copied." ;
+	return(*this);
 }
 
 Brain::~Brain() {

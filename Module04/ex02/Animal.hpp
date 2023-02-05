@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:09:51 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 17:27:55 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/05 15:26:29 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ public:
 protected:
 	Animal();
 	Animal(std::string type);
+	Animal(const Animal &obj);
+	Animal &operator = (const Animal& obj);
 	std::string type;
 
 } ;

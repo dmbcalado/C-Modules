@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:14:00 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 16:40:47 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/05 15:00:11 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ public:
 	// Constructors
 	WrongAnimal();
 	WrongAnimal(std::string type);
+
+	WrongAnimal(const WrongAnimal &obj);
+
+	WrongAnimal &operator = (const WrongAnimal& obj);
 
 	// Member functions of Animal
 	virtual void	makeSound() const; // !virtual!

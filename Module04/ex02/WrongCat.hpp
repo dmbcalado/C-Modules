@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:03:30 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 16:21:11 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/05 14:56:03 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ class WrongCat : public WrongAnimal {
 
 public:
 	WrongCat();
+
+	WrongCat(const WrongCat &obj);
+
+	WrongCat &operator = (const WrongCat& obj);
 	void	makeSound() const;
 	virtual ~WrongCat();
 

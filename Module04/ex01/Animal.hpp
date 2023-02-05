@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:09:51 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 17:23:05 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/05 14:47:38 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ public:
 	// Constructors
 	Animal();
 	Animal(std::string type);
+	Animal(const Animal &obj);
+	Animal &operator = (const Animal& obj);
 
 	// Member functions of Animal
 	virtual void	makeSound() const; // !virtual!

@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/05 15:12:19 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/05 15:12:20 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "Brain.hpp"
+
 #include "Animal.hpp"
 
 // ------------- Constructor and Destructor -------------
 Animal::Animal() {
-	
 	std::cout << "Animal Class created." << std::endl;
 }
 
@@ -14,7 +24,18 @@ Animal::Animal(std::string name_type) {
 	std::cout << std::endl;
 }
 
-Animal::~Animal(){
+Animal::Animal(const Animal &obj) {
+	type = obj.type;
+	std::cout << "Animal Class created." ;
+}
+
+Animal &Animal::operator = (const Animal& obj) {
+	this->type = obj.type;
+	std::cout << "Animal Class copied." ;
+	return(*this);
+}
+
+Animal::~Animal() {
 	std::cout << "Animal Class destroyed.";
 	std::cout << std::endl;
 }

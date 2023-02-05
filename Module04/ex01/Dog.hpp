@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:05:16 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/04 17:09:25 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/05 15:10:30 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ class Dog : public Animal {
 
 public:
 	Dog();
+
+	Dog(const Dog &obj);
+
+	Dog &operator = (const Dog& obj);
+
 	void	makeSound() const;
 	virtual ~Dog();
 

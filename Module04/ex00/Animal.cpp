@@ -12,6 +12,17 @@ Animal::Animal(std::string name_type) {
 	std::cout << std::endl;
 }
 
+Animal::Animal(const Animal &obj) {
+	type = obj.type;
+	std::cout << "Animal Class created." ;
+}
+
+Animal &Animal::operator = (const Animal& obj) {
+	this->type = obj.type;
+	std::cout << "Animal Class copied." ;
+	return(*this);
+}
+
 Animal::~Animal() {
 	std::cout << "Animal Class destroyed.";
 	std::cout << std::endl;
