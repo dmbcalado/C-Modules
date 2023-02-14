@@ -1,9 +1,34 @@
-#include "Bureaucrat.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:09:01 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/14 18:01:50 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//				FORM FUNCTIONS
+#include "Form.hpp"
+
+//	FORM FUNCTIONS
+
+Form::Form(std::string name, int signinggrade, int executiongrade) : Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
+{
+	if (signinggrade < 1 ) {
+		std::cout << "Form " << Name << std::endl;
+		throw(GradeTooHighException);
+	}
+	else if (signinggrade > 150) {
+		std::cout << "Form " << Name << std::endl;
+		throw(GradeTooLowException);
+	}
+	std::cout << "form " << Name << " with required grade = " << signingGrade << " was created." << std::endl;
+}
 
 std::string Form::getName() const {
-	return name;
+	return Name;
 }
 
 bool Form::getIsSigned() const {
@@ -19,17 +44,20 @@ int Form::getExecutionGrade() const {
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat) {
-		if (bureaucrat.getGrade() > signingGrade)
-			throw GradeTooLowException();
-		isSigned = true;
+		if (bureaucrat.getGrade() <= signingGrade)
+		{
+			isSigned = true;
+			bureaucrat.signForm(this->getName(), isSigned);
+		}
+		throw GradeTooLowException;
 	}
 
-//			OVERLOAD OF << OPERATOR
+// OVERLOAD OF << OPERATOR
 
 std::ostream& operator<<(std::ostream& stream, Form const &form) {
-	stream << "Form: " << form.name << std::endl;
-	stream << "Signed: " << std::boolalpha << form.isSigned << std::endl;
-	stream << "Signing Grade: " << form.signingGrade << std::endl;
-	stream << "Execution Grade: " << form.executionGrade;
+	stream << "Form: " << form.getName() << std::endl;
+	stream << "Signed: " << form.getIsSigned() << std::endl;
+	stream << "Signing Grade: " << form.getSigningGrade() << std::endl;
+	stream << "Execution Grade: " << form.getExecutionGrade();
 	return stream;
 }

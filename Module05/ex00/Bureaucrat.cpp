@@ -13,15 +13,22 @@ Bureaucrat::Bureaucrat(std::string name, int grade) {
 		Grade = grade;
 	}
 	else if (grade < 1) {
-		throw(Bureaucrat::GradeTooHighException());
+		throw(Bureaucrat::GradeTooHighException);
 	}
 	else if (grade > 150) {
-		throw(Bureaucrat::GradeTooLowException());
+		throw(Bureaucrat::GradeTooLowException);
 	}
 	std::cout << "Bureaucrat " << Name << std::endl;
 	std::cout << "With grade: " << Grade << std::endl;
 	std::cout << "created." << std::endl;
 }
+
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) {
+	Name = obj.Name;
+	Grade = obj.Grade;
+	std::cout << "Animal Class created." ;
+}
+
 
 Bureaucrat::~Bureaucrat(){
 	std::cout << "Bureaucrat destroyed.";
@@ -50,7 +57,7 @@ void	Bureaucrat::IncreaseGrade() {
 	}
 	else {
 		std::cout << "Bureaucrat " << Name;
-		throw(Bureaucrat::GradeTooHighException());
+		throw(Bureaucrat::GradeTooHighException);
 	}
 }
 
@@ -61,16 +68,6 @@ void	Bureaucrat::DecreaseGrade() {
 	}
 	else {
 		std::cout << "Bureaucrat " << Name;
-		throw(Bureaucrat::GradeTooHighException());
+		throw(Bureaucrat::GradeTooLowException);
 	}
-}
-
-const char	*Bureaucrat::GradeTooHighException::what() const throw() {
-	std::cout << " is already the best. No way to climb being the Top G.\n" << std::endl;
-	return ("He already is the best");
-}
-
-const char	*Bureaucrat::GradeTooLowException::what() const throw() {
-	std::cout << " is the worst already. Time to fire him.\n" << std::endl;
-	return ("He already is the worst");
 }

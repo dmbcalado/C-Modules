@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/14 17:56:20 by ratinhosujo      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef BUREAUCRAT_HPP
 # define  BUREAUCRAT_HPP
@@ -11,35 +23,8 @@
 # include <iostream>
 # include <bits/stdc++.h>
 
-class Form {
-
-public:
-	Form(std::string const &name, int signingGrade, int executionGrade);
-
-	std::string getName() const;
-	bool getIsSigned() const;
-	int getSigningGrade() const;
-	int getExecutionGrade() const;
-	void beSigned(Bureaucrat &bureaucrat);
-
-	friend std::ostream& operator<<(std::ostream& os, Form const &form);
-
-	class GradeTooHighException: public std::exception {
-		public:
-			virtual const char* what() const throw();
-	} ;
-
-	class GradeTooLowException : public std::exception {
-		public:
-			virtual const char* what() const throw();
-	} ;
-
-private:
-	const std::string name;
-	bool isSigned;
-	const int signingGrade;
-	const int executionGrade;
-} ;
+#include "GradeTooHighException.hpp"
+#include "GradeTooLowException.hpp"
 
 class Bureaucrat {
 
@@ -47,8 +32,16 @@ public:
 
 	//Constructors & Destructors
 	Bureaucrat();
+	Bureaucrat(const Bureaucrat &obj);
 	Bureaucrat(std::string name, int grade);
 	~Bureaucrat();
+
+	Bureaucrat &operator = (const Bureaucrat& old) {
+		Name = old.Name;
+		Grade = old.Grade;
+		std::cout << "Copy assignement operator activated." << std::endl;
+		return *this;
+	}
 
 	// Getters
 	int			getGrade();
@@ -58,20 +51,21 @@ public:
 	void	IncreaseGrade();
 	void	DecreaseGrade();
 
+	//signing form checker
 
-	class GradeTooHighException: public std::exception {
-		public:
-			virtual const char* what() const throw();
-	} ;
+	void	signForm(std::string form_name, bool isSigned);
 
-	class GradeTooLowException : public std::exception {
-		public:
-			virtual const char* what() const throw();
-	} ;
+	TooHighException GradeTooHighException;
+	TooLowException GradeTooLowException;
+
+	
 
 private:
 	std::string	Name;
 	int			Grade;
+
 } ;
+
+std::ostream &operator<<(std::ostream &stream, Bureaucrat &Bc);
 
 #endif
