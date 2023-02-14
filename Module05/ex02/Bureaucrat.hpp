@@ -6,9 +6,10 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:03:27 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/14 17:56:20 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef BUREAUCRAT_HPP
 # define  BUREAUCRAT_HPP
@@ -22,23 +23,8 @@
 # include <iostream>
 # include <bits/stdc++.h>
 
-class GradeTooHigh : public std::exception {
-public:
-	const char	*what() const throw() {
-	std::cout << "\033[101m\033[1mToo high grade. No can do.\033[0m\n" << std::endl;
-	return ("\033[103m\033[1mToo high grade error.\033[0m");
-}
-} ;
-
-class GradeTooLow : public std::exception {
-
-public:
-const char	*what() const throw() {
-	std::cout << "\033[101m\033[1mToo low grade. No can do.\033[0m\n" << std::endl;
-	return ("\033[103m\033[1mToo low grade error.\033[0m");
-}
-} ;
-
+#include "GradeTooHighException.hpp"
+#include "GradeTooLowException.hpp"
 
 class Bureaucrat {
 
@@ -65,11 +51,14 @@ public:
 	void	IncreaseGrade();
 	void	DecreaseGrade();
 
-	// signing form
+	//signing form checker
+
 	void	signForm(std::string form_name, bool isSigned);
 
-	GradeTooHigh GradeTooHighException;
-	GradeTooLow GradeTooLowException;
+	TooHighException GradeTooHighException;
+	TooLowException GradeTooLowException;
+
+	
 
 private:
 	std::string	Name;

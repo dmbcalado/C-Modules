@@ -6,7 +6,7 @@
 #    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 15:01:42 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/02/14 14:55:31 by ratinhosujo      ###   ########.fr        #
+#    Updated: 2023/02/14 19:19:35 by ratinhosujo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,6 @@ NAME = bureaucrat
 
 SRCS = main.cpp \
        Bureaucrat.cpp \
-	   GradeTooLowException.cpp \
-       GradeTooHighException.cpp
 
 OBJS = $(SRCS: .cpp = .o)
 

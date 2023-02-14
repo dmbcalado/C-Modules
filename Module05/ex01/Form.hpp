@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:13:28 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 18:22:59 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/14 20:01:21 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FORM_HPP
 
 # include "Bureaucrat.hpp"
-# include "GradeTooHighException.hpp"
-# include "GradeTooLowException.hpp"
 
 class Form {
 
@@ -28,8 +26,8 @@ public:
 	int getExecutionGrade() const;
 	void beSigned(Bureaucrat &bureaucrat);
 
-	TooHighException GradeTooHighException;
-	TooLowException  GradeTooLowException;
+	GradeTooHigh GradeTooHighException;
+	GradeTooLow  GradeTooLowException;
 
 private:
 	bool isSigned;

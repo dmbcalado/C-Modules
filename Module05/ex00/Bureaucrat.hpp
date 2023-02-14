@@ -6,10 +6,9 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 14:37:08 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/14 19:49:01 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef BUREAUCRAT_HPP
 # define  BUREAUCRAT_HPP
@@ -23,8 +22,23 @@
 # include <iostream>
 # include <bits/stdc++.h>
 
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
+class GradeTooHigh : public std::exception {
+public:
+	const char	*what() const throw() {
+	std::cout << "\033[101m\033[1mToo high grade. No can do.\033[0m\n" << std::endl;
+	return ("\033[103m\033[1mToo high grade error.\033[0m");
+}
+} ;
+
+class GradeTooLow : public std::exception {
+
+public:
+const char	*what() const throw() {
+	std::cout << "\033[101m\033[1mToo low grade. No can do.\033[0m\n" << std::endl;
+	return ("\033[103m\033[1mToo low grade error.\033[0m");
+}
+} ;
+
 
 class Bureaucrat {
 
@@ -51,10 +65,8 @@ public:
 	void	IncreaseGrade();
 	void	DecreaseGrade();
 
-	TooHighException GradeTooHighException;
-	TooLowException GradeTooLowException;
-
-	
+	GradeTooHigh GradeTooHighException;
+	GradeTooLow GradeTooLowException;
 
 private:
 	std::string	Name;
