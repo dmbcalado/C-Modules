@@ -29,16 +29,9 @@ Bureaucrat::Bureaucrat(const Bureaucrat &obj) {
 	std::cout << "Animal Class created." ;
 }
 
-
 Bureaucrat::~Bureaucrat(){
 	std::cout << "Bureaucrat destroyed.";
 	std::cout << std::endl;
-}
-
-std::ostream& operator<<(std::ostream& stream, Bureaucrat& Bc) {
-	stream << "Name : " << Bc.getName() << std::endl;
-	stream << "Grade : " << Bc.getGrade() << "\n" << std::endl;
-	return stream;
 }
 
 
@@ -56,7 +49,7 @@ void	Bureaucrat::IncreaseGrade() {
 		std::cout << "Bureaucrat " << Name << " has climbed the letter." << std::endl;
 	}
 	else {
-		std::cout << "Bureaucrat " << Name;
+		std::cout << "Bureaucrat " << Name << " has ";
 		throw(Bureaucrat::GradeTooHighException);
 	}
 }
@@ -74,7 +67,13 @@ void	Bureaucrat::DecreaseGrade() {
 
 void	Bureaucrat::signForm(std::string form_name, bool isSigned) {
 	if (isSigned == true)
-		std::cout << Name << " signed " << form_name;
+		std::cout << Name << " \033[102m\033[1msigned " << form_name << "\033[0m" << std::endl;
 	else
-		std::cout << Name << " couldn't sign " << form_name << " because the grade wasn't enough." << std::endl;
+		std::cout << Name << " \033[104m\033[1mcouldn't sign " << form_name << "\033[0m because the grade wasn't enough." << std::endl;
+}
+
+std::ostream& operator <<(std::ostream& stream, Bureaucrat& Bc) {
+	stream << "Name : " << Bc.getName() << std::endl;
+	stream << "Grade : " << Bc.getGrade() << "\n" << std::endl;
+	return stream;
 }

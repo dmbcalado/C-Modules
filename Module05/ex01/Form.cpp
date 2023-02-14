@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:09:01 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 18:01:50 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/14 18:27:25 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Form::Form(std::string name, int signinggrade, int executiongrade) : Name(name),
 		std::cout << "Form " << Name << std::endl;
 		throw(GradeTooLowException);
 	}
-	std::cout << "form " << Name << " with required grade = " << signingGrade << " was created." << std::endl;
+	std::cout << "form " << Name << " with sign grade = " << signingGrade << " was created." << std::endl;
 }
 
 std::string Form::getName() const {
@@ -44,17 +44,23 @@ int Form::getExecutionGrade() const {
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat) {
+	if (bureaucrat.getGrade() <= executionGrade)
+	{
 		if (bureaucrat.getGrade() <= signingGrade)
 		{
 			isSigned = true;
 			bureaucrat.signForm(this->getName(), isSigned);
 		}
-		throw GradeTooLowException;
+		else
+			bureaucrat.signForm(this->getName(), isSigned);
 	}
+	else
+		throw(GradeTooLowException);
+}
 
 // OVERLOAD OF << OPERATOR
 
-std::ostream& operator<<(std::ostream& stream, Form const &form) {
+std::ostream& operator <<(std::ostream& stream, Form const &form) {
 	stream << "Form: " << form.getName() << std::endl;
 	stream << "Signed: " << form.getIsSigned() << std::endl;
 	stream << "Signing Grade: " << form.getSigningGrade() << std::endl;

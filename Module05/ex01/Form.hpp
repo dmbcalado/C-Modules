@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:13:28 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 17:13:18 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/14 18:22:59 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ private:
 	const int executionGrade;
 } ;
 
-std::ostream& operator<<(std::ostream& os, Form const &form);
+std::ostream& operator <<(std::ostream &stream, Form const &form);
 
 #endif
