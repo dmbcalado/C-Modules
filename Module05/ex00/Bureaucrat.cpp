@@ -35,11 +35,6 @@ Bureaucrat::~Bureaucrat(){
 	std::cout << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& stream, Bureaucrat& Bc) {
-	stream << "Name : " << Bc.getName() << std::endl;
-	stream << "Grade : " << Bc.getGrade() << "\n" << std::endl;
-	return stream;
-}
 
 
 std::string	Bureaucrat::getName() {
@@ -70,4 +65,10 @@ void	Bureaucrat::DecreaseGrade() {
 		std::cout << "Bureaucrat " << Name;
 		throw(Bureaucrat::GradeTooLowException);
 	}
+}
+
+std::ostream& operator<<(std::ostream& stream, Bureaucrat& Bc) {
+	stream << "Name : " << Bc.getName() << std::endl;
+	stream << "Grade : " << Bc.getGrade() << "\n" << std::endl;
+	return stream;
 }
