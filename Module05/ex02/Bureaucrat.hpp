@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:03:27 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/15 06:51:47 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <cstdlib>
 # include <fstream>
 # include <iostream>
+# include <sys/time.h>
 # include <bits/stdc++.h>
 
 class GradeTooHigh : public std::exception {
@@ -58,7 +59,7 @@ public:
 	}
 
 	// Getters
-	int			getGrade();
+	int			getGrade() const;
 	std::string	getName();
 
 	//Increase and Decrease grade

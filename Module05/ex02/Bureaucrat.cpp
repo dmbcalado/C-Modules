@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:19:10 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:06:29 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/15 06:51:37 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ std::string	Bureaucrat::getName() {
 	return Name;
 }
 
-int	Bureaucrat::getGrade() {
+int	Bureaucrat::getGrade() const {
 	return Grade;
 }
 

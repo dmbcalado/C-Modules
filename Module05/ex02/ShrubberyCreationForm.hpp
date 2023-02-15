@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 20:29:27 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 04:43:06 by ratinhosujo      ###   ########.fr       */
+/*   Created: 2023/02/15 03:50:54 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/15 04:43:32 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_H
-# define ROBOTOMYREQUESTFORM_H
+#ifndef SHRUBBERYCREATIONFORM_H
+# define SHRUBBERYCREATIONFORM_H
 
 #include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm {
+class ShrubberyCreationForm : public AForm {
 	public:
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &original);
+		~ShrubberyCreationForm();
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &original);
 
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(const RobotomyRequestForm &original);
-		~RobotomyRequestForm();
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &original);
-		
 		virtual void	function() const;
 	private:
 		std::string target;
