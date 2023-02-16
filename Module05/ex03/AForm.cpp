@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:26:47 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 17:40:25 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:41:23 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //	AForm FUNCTIONS
 
 AForm::AForm(std::string name, int signinggrade, int executiongrade) : \
-	isSigned(false), Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
+	 isSigned(false), Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
 {
 	if (signinggrade < 1 ) {
 		std::cout << "AForm " << Name << std::endl;
@@ -41,6 +41,7 @@ AForm &AForm::operator = (const AForm &obj)
 	isSigned = obj.isSigned;
 	return (*this);
 }
+
 
 AForm::~AForm() {
 	std::cout << "AForm " << Name << " destroyed." << std::endl;

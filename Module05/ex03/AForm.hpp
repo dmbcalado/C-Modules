@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:25:17 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 17:40:08 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:42:02 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ public:
 	AForm(const AForm &obj);
 	AForm &operator = (const AForm &obj);
 	virtual ~AForm();
+
 	virtual bool getIsSigned() const;
 	virtual std::string getName() const;
 	virtual int getSigningGrade() const;

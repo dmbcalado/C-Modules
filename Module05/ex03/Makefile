@@ -6,16 +6,17 @@
 #    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 15:01:42 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/02/16 14:40:13 by ratinhosujo      ###   ########.fr        #
+#    Updated: 2023/02/16 17:45:19 by ratinhosujo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 GPP = c++
 
-NAME = lotsofForms
+NAME = intern
 
 SRCS = main.cpp \
        AForm.cpp \
+       Intern.cpp \
        Bureaucrat.cpp \
        RobotomyRequestForm.cpp \
 	   ShrubberyCreationForm.cpp \
@@ -29,7 +30,7 @@ all :	$(NAME)
 
 $(NAME): $(OBJS)
 	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
-	@echo	"\033[102m\033[1mlotsofForms created\033[0m"
+	@echo	"\033[102m\033[1mintern created\033[0m"
 
 clean :
 	@rm -rf *.o
@@ -37,7 +38,7 @@ clean :
 
 fclean :	clean
 	@rm -rf $(NAME)
-	@echo	"\033[101m\033[1mlotsofForms deleted\033[0m"
+	@echo	"\033[101m\033[1mintern deleted\033[0m"
 
 re :	fclean all
 

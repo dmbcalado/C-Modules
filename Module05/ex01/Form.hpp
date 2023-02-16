@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:13:28 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:01:21 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:37:04 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ class Form {
 public:
 
 	Form(std::string name, int signinggrade, int executiongrade);
+	Form(const Form &obj);
+
+	Form &operator = (const Form &obj);
+	
 	bool getIsSigned() const;
 	std::string getName() const;
 	int getSigningGrade() const;

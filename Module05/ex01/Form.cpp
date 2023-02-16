@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:09:01 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:06:17 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:37:44 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 //	FORM FUNCTIONS
 
-Form::Form(std::string name, int signinggrade, int executiongrade) : Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
+Form::Form(std::string name, int signinggrade, int executiongrade) : \
+isSigned(false), Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
 {
 	if (signinggrade < 1 ) {
 		std::cout << "Form " << Name << std::endl;
@@ -25,6 +26,18 @@ Form::Form(std::string name, int signinggrade, int executiongrade) : Name(name),
 		throw(GradeTooLowException);
 	}
 	std::cout << "form " << Name << " with sign grade = " << signingGrade << " was created." << std::endl;
+}
+
+Form::Form(const Form &obj) : \
+isSigned(false), Name(obj.Name), signingGrade(obj.signingGrade), executionGrade(obj.executionGrade)
+{
+	std::cout << "Form Copy Constructor called." ;
+}
+
+Form &Form::operator = (const Form &obj)
+{
+	isSigned = obj.isSigned;
+	return (*this);
 }
 
 std::string Form::getName() const {

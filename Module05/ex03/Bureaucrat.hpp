@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 17:42:41 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 16:12:24 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 # include <cstdlib>
 # include <fstream>
 # include <iostream>
+# include <sys/time.h>
 # include <bits/stdc++.h>
+
+class AForm;
 
 class GradeTooHigh : public std::exception {
 public:
@@ -35,7 +38,7 @@ class GradeTooLow : public std::exception {
 public:
 const char	*what() const throw() {
 	std::cout << "\033[101m\033[1mToo low grade. No can do.\033[0m\n" << std::endl;
-	return ("\033[103m\033[1mToo low grade error.\033[0m");
+	return ("\033[103m\033[1mLow grade error.\033[0m");
 }
 } ;
 
@@ -50,24 +53,38 @@ public:
 	Bureaucrat(std::string name, int grade);
 	~Bureaucrat();
 
-	Bureaucrat &operator = (const Bureaucrat& obj);
+	Bureaucrat &operator = (const Bureaucrat& old) {
+		Name = old.Name;
+		Grade = old.Grade;
+		std::cout << "Copy assignement operator activated." << std::endl;
+		return *this;
+	}
 
 	// Getters
-	int			getGrade();
-	std::string	getName();
+	int			getGrade() const;
+	std::string	getName() const;
 
 	//Increase and Decrease grade
 	void	IncreaseGrade();
 	void	DecreaseGrade();
 
+	// signing form
+	void	signForm(std::string form_name, bool isSigned);
+
+	// execute form function
+
+	void	executeForm(AForm const &form);
+
 	GradeTooHigh GradeTooHighException;
 	GradeTooLow GradeTooLowException;
 
 private:
-	const std::string Name;
-	int Grade;
+	std::string	Name;
+	int			Grade;
 
 } ;
+
+#include "AForm.hpp"
 
 std::ostream &operator<<(std::ostream &stream, Bureaucrat &Bc);
 

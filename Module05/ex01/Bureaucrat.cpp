@@ -6,38 +6,31 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:19:10 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:06:29 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:32:36 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-// ------------- Standard Constructor-------------
-Bureaucrat::Bureaucrat() {
-	std::cout << "Bureaucrat created." << std::endl;
-}
-
-// ------------- Parameterized Constructor-------------
-Bureaucrat::Bureaucrat(std::string name, int grade) {
-	Name = name;
-	if (grade > 0 && grade < 150) {
-		Grade = grade;
-	}
-	else if (grade < 1) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : Name(name), Grade(grade){
+	if (grade < 1) {
 		throw(Bureaucrat::GradeTooHighException);
 	}
 	else if (grade >= 150) {
 		throw(Bureaucrat::GradeTooLowException);
 	}
 	std::cout << "Bureaucrat " << Name;
-	std::cout << " with grade = " << Grade;
+	std::cout << " with grade : " << Grade;
 	std::cout << " created." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj) {
-	Name = obj.Name;
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) : Name(obj.Name), Grade(obj.Grade) {
+	std::cout << "Bureaucrat Copy Constructor called." ;
+}
+
+Bureaucrat &Bureaucrat::operator = (const Bureaucrat& obj) {
 	Grade = obj.Grade;
-	std::cout << "Animal Class created." ;
+	return(*this);
 }
 
 

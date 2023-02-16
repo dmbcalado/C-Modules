@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:03:27 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:33:16 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,7 @@ public:
 	Bureaucrat(std::string name, int grade);
 	~Bureaucrat();
 
-	Bureaucrat &operator = (const Bureaucrat& old) {
-		Name = old.Name;
-		Grade = old.Grade;
-		std::cout << "Copy assignement operator activated." << std::endl;
-		return *this;
-	}
+	Bureaucrat &operator = (const Bureaucrat& obj);
 
 	// Getters
 	int			getGrade();
@@ -72,7 +67,7 @@ public:
 	GradeTooLow GradeTooLowException;
 
 private:
-	std::string	Name;
+	const std::string	Name;
 	int			Grade;
 
 } ;

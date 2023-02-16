@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 04:26:29 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 17:38:21 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class GradeTooLow : public std::exception {
 public:
 const char	*what() const throw() {
 	std::cout << "\033[101m\033[1mToo low grade. No can do.\033[0m\n" << std::endl;
-	return ("\033[103m\033[1mToo low grade error.\033[0m");
+	return ("\033[103m\033[1mLow grade error.\033[0m");
 }
 } ;
 
@@ -48,21 +48,15 @@ class Bureaucrat {
 public:
 
 	//Constructors & Destructors
-	Bureaucrat();
-	Bureaucrat(const Bureaucrat &obj);
 	Bureaucrat(std::string name, int grade);
+	Bureaucrat(const Bureaucrat &obj);
 	~Bureaucrat();
 
-	Bureaucrat &operator = (const Bureaucrat& old) {
-		Name = old.Name;
-		Grade = old.Grade;
-		std::cout << "Copy assignement operator activated." << std::endl;
-		return *this;
-	}
+	Bureaucrat &operator = (const Bureaucrat& old);
 
 	// Getters
 	int			getGrade() const;
-	std::string	getName();
+	std::string	getName() const;
 
 	//Increase and Decrease grade
 	void	IncreaseGrade();
@@ -79,7 +73,7 @@ public:
 	GradeTooLow GradeTooLowException;
 
 private:
-	std::string	Name;
+	const std::string	Name;
 	int			Grade;
 
 } ;
