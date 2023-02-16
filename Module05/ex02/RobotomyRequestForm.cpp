@@ -6,18 +6,18 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 04:31:22 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 04:44:32 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:40:41 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("ShruberryCreationForm", 145, 137), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string Target) : AForm("ShruberryCreationForm", 72, 45), target(Target)
 {
 	std::cout << "RobotomyRequestForm Constructor called." << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &original) : AForm(original), target(target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &original) : AForm(original), target(original.target)
 {
 	std::cout << "Robotomy Copy Constructor called." << std::endl;
 }

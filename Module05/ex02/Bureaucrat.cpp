@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:19:10 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 06:51:37 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:21:36 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ Bureaucrat::~Bureaucrat(){
 	std::cout << std::endl;
 }
 
-
-
 std::string	Bureaucrat::getName() {
 	return Name;
 }
@@ -83,6 +81,10 @@ void	Bureaucrat::signForm(std::string form_name, bool isSigned) {
 		std::cout << Name << " \033[102m\033[1msigned " << form_name << "\033[0m" << std::endl;
 	else
 		std::cout << Name << " \033[104m\033[1mcouldn't sign " << form_name << "\033[0m because the grade wasn't enough." << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const &form) {
+		form.execute(*this);
 }
 
 std::ostream& operator <<(std::ostream& stream, Bureaucrat& Bc) {

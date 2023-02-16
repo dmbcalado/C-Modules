@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 06:51:47 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:26:29 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <iostream>
 # include <sys/time.h>
 # include <bits/stdc++.h>
+
+class AForm;
 
 class GradeTooHigh : public std::exception {
 public:
@@ -69,6 +71,10 @@ public:
 	// signing form
 	void	signForm(std::string form_name, bool isSigned);
 
+	// execute form function
+
+	void	executeForm(AForm const &form);
+
 	GradeTooHigh GradeTooHighException;
 	GradeTooLow GradeTooLowException;
 
@@ -77,6 +83,8 @@ private:
 	int			Grade;
 
 } ;
+
+#include "AForm.hpp"
 
 std::ostream &operator<<(std::ostream &stream, Bureaucrat &Bc);
 

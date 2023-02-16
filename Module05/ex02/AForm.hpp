@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:25:17 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 06:52:51 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:31:58 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 
 # include "Bureaucrat.hpp"
 
-class ExecutGrade : public std::exception {
-public:
-	const char	*what() const throw() {
-	std::cout << "\033[101m\033[1mGrade too low for execution. \033[0m\n" << std::endl;
-	return ("\033[103m\033[1mexecution error.\033[0m");
-}
-} ;
 
 class UnSigned : public std::exception {
 public:
 	const char	*what() const throw() {
 	std::cout << "\033[101m\033[1mForm not signed.\033[0m\n" << std::endl;
-	return ("\033[103m\033[1mform error.\033[0m");
+	return ("\033[103m\033[1mUnsigned Form.\033[0m");
+}
+} ;
+
+class ExecutGrade : public std::exception {
+public:
+	const char	*what() const throw() {
+	std::cout << "\033[101m\033[1mGrade too low for execution. \033[0m\n" << std::endl;
+	return ("\033[103m\033[1mexecution error.\033[0m");
 }
 } ;
 
@@ -47,9 +48,8 @@ public:
 	GradeTooLow  GradeTooLowException;
 	GradeTooHigh GradeTooHighException;
 	
-
 	virtual void execute(Bureaucrat const &executor) const {
-		if (executor.getGrade() >= executionGrade)
+		if (executor.getGrade() <= executionGrade)
 		{
 			if (isSigned)
 			{
@@ -62,9 +62,8 @@ public:
 		else
 			throw(ExecutionGrade);
 	}
+	virtual void function() const = 0;
 
-protected:
-		virtual void function() const = 0;
 private:
 	bool isSigned;
 	const std::string Name;

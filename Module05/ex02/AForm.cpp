@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:26:47 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 06:25:09 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:42:28 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 //	AForm FUNCTIONS
 
-AForm::AForm(std::string name, int signinggrade, int executiongrade) : Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
+AForm::AForm(std::string name, int signinggrade, int executiongrade) : \
+	 isSigned(false), Name(name), signingGrade(signinggrade), executionGrade(executiongrade)
 {
 	if (signinggrade < 1 ) {
 		std::cout << "AForm " << Name << std::endl;

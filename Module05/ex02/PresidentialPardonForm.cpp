@@ -6,18 +6,18 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 04:47:28 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 04:48:49 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:29:51 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("ShruberryCreationForm", 145, 137), target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string Target) : AForm("PresidentialPardonForm", 25, 45), target(Target)
 {
 	std::cout << "PresidentialPardonForm Constructor called." << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original) : AForm(original), target(target)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original) : AForm(original), target(original.target)
 {
 	std::cout << "Robotomy Copy Constructor called." << std::endl;
 }

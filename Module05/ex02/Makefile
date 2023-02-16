@@ -6,7 +6,7 @@
 #    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 15:01:42 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/02/14 17:10:06 by ratinhosujo      ###   ########.fr        #
+#    Updated: 2023/02/16 03:55:46 by ratinhosujo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ GPP = c++
 NAME = form
 
 SRCS = main.cpp \
-       Form.cpp \
+       AForm.cpp \
        Bureaucrat.cpp \
-       GradeTooLowException.cpp \
-       GradeTooHighException.cpp
+       RobotomyRequestForm.cpp \
+	   ShrubberyCreationForm.cpp \
+       PresidentialPardonForm.cpp \
 
 OBJS = $(SRCS: .cpp = .o)
 

@@ -6,18 +6,18 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 04:06:35 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/15 04:43:41 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/16 04:29:22 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShruberryCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string Target) : AForm("ShruberryCreationForm", 145, 137), target(Target)
 {
 	std::cout << "ShrubberyCreationForm Constructor called." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) : AForm(original), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) : AForm(original), target(original.target)
 {
 	std::cout << "Shrubbery Copy Constructor called." << std::endl;
 }
