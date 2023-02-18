@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:19:10 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 19:01:38 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/18 19:52:56 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// The trick in this converter is using static_cast<int> template.
 
 #include "Converter.hpp"
 
 Converter::Converter()
 {
-	std::cout << "\n Convert default Constructor called" << std::endl;
+	std::cout << "Converter Constructor called." << std::endl;
 }
 
 Converter::Converter(std::string argument) : argument(argument)
 {
-	std::cout << "\n Convert Constructor called" << std::endl;
+	std::cout << "Converter Constructor called." << std::endl;
 }
 
 Converter::~Converter()
 {
-	std::cout << " Convert Destructor called\n" << std::endl;
+	std::cout << " Converter Destructor called." << std::endl;
 }
 
 Converter::Converter(const Converter &original)
@@ -34,7 +36,7 @@ Converter::Converter(const Converter &original)
 	this->integer = original.integer;
 	this->floater = original.floater;
 	this->doubler = original.doubler;
-	std::cout << " Convert Copy Constructor called" << std::endl;
+	std::cout << " Converter Copy Constructor called." << std::endl;
 }
 
 Converter &Converter::operator=(const Converter &original)
@@ -45,7 +47,7 @@ Converter &Converter::operator=(const Converter &original)
 	this->floater = original.floater;
 	this->integer = original.integer;
 	return (*this);
-	std::cout << " Convert Copy Assigment operator called" << std::endl;
+	std::cout << " Converter Copy Assigment operator called" << std::endl;
 }
 
 void	Converter::convertArgToType(void)
@@ -139,70 +141,72 @@ void	Converter::convertArgToType(void)
 void	Converter::convertChar(void)
 {
 	std::cout << std::endl;
-	std::cout << "   Char convert" << std::endl;
+	std::cout << "\033[103m\033[1mChar converter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getChar() < 0 && getChar() > 126)
-		std::cout << "   char: impossible" << std::endl;
+		std::cout << "\033[101m\033[1mchar: impossible\033[0m  " << std::endl;
 	else if (!std::isprint(getChar()))
-		std::cout << "   char: not displayable" << std::endl;
+		std::cout << "\033[101m\033[1mchar: not displayable\033[0m  " << std::endl;
 	else
-		std::cout << "   char: " << getChar() << std::endl;
+		std::cout << "\033[104m\033[1mchar:  \033[0m  " << getChar() << std::endl;
 	setInt(static_cast<int>(getChar()));
-	std::cout << "   int: " << getInt() << std::endl;
+	std::cout << "\033[104m\033[1mint:   \033[0m  " << getInt() << std::endl;
 	setFloat(static_cast<float>(getChar()));
-	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "\033[104m\033[1mfloat: \033[0m  " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<double>(getChar()));
-	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	std::cout << "\033[104m\033[1mdouble:\033[0m  " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
 	std::cout << std::endl;
 }
 
 void	Converter::convertInt(void)
 {
 	std::cout << std::endl;
-	std::cout << "   Int convert" << std::endl;
+	std::cout << "\033[103m\033[1mInt converter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getInt() < 0 || getInt() > 255)
-		std::cout << "   char: impossible" << std::endl;
+		std::cout << "\033[101m\033[1mchar: impossible\033[0m  " << std::endl;
 	else
 	{
 		if (!std::isprint(getInt()))
-			std::cout << "   char: not displayable" << std::endl;
+			std::cout << "\033[101m\033[1mchar: not displayable\033[0m  " << std::endl;
 		else
 		{
 			setChar(static_cast<char>(getInt()));
-			std::cout << "   char: " << getChar() << std::endl;
+			std::cout << "\033[104m\033[1mchar:  \033[0m  " << getChar() << std::endl;
 		}
 	}
-	std::cout << "   int: " << getInt() << std::endl;
+	std::cout << "\033[104m\033[1mint:   \033[0m  " << getInt() << std::endl;
 	setFloat(static_cast<float>(getInt()));
-	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "\033[104m\033[1mfloat:   \033[0m  " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<double>(getInt()));
-	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	std::cout << "\033[104m\033[1mdouble:   \033[0m  " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
 	std::cout << std::endl;
 }
 
 void	Converter::convertFloat(int x)
 {
+	setFloat(x);
 	std::cout << std::endl;
-	std::cout << "   Float convert" << std::endl;
+	std::cout << "\033[103m\033[1mFloat converter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getFloat() < 0 || getFloat() > 255)
-		std::cout << "   char: impossible" << std::endl;
+		std::cout << "\033[101m\033[1mchar: impossible\033[0m  " << std::endl;
 	else
 	{
 		if (!std::isprint(getFloat()))
-			std::cout << "   char: not displayable" << std::endl;
+			std::cout << "\033[101m\033[1mchar: not displayable\033[0m  " << std::endl;
 		else
 		{
 			setChar(static_cast<char>(getFloat()));
-			std::cout << "   char: " << getChar() << std::endl;
+				std::cout << "\033[104m\033[1mchar:  \033[0m  " << getChar() << std::endl;
 		}
 	}
 	setInt(static_cast<int>(getFloat()));
-	std::cout << "   int: " << getInt() << std::endl;
-	std::cout << "   float: " << std::setprecision(x) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "\033[104m\033[1mint:   \033[0m  " << getInt() << std::endl;
+	setFloat(static_cast<float>(getInt()));
+	std::cout << "\033[104m\033[1mfloat:   \033[0m  " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<double>(getFloat()));
-	std::cout << "   double: " << std::setprecision(x) << std::fixed << getDouble() << std::endl;
+	std::cout << "\033[104m\033[1mdouble:   \033[0m  " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
 	std::cout << std::endl;
 }
 
@@ -249,7 +253,6 @@ void	Converter::convertSpecialFloat(void)
 	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<float>(getFloat()));
 	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
-	//https://stackoverflow.com/questions/38795544/is-casting-of-infinity-to-integer-undefined
 	std::cout << std::endl;
 }
 
@@ -271,7 +274,6 @@ void	Converter::convertSpecialDouble(void)
 	setFloat(static_cast<float>(getDouble()));
 	std::cout << "   float: " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
 	std::cout << "   double: " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
-	//https://stackoverflow.com/questions/38795544/is-casting-of-infinity-to-integer-undefined
 	std::cout << std::endl;
 }
 
