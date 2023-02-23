@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 04:50:05 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/23 20:34:00 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/23 20:43:42 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ Array<T>::Array(int n) {
 template<class T>
 Array<T>::Array(const Array &obj) {
 	this->array_size = obj.size();
-	this->elements = new T[this->size]();
-	*this = obj;
+	this->elements = new T[this->array_size]();
 	std::cout << "Array Copy Constructor called." << std::endl;
 }
 
@@ -74,9 +73,8 @@ template<class T>
 Array<T> &Array<T>::operator =(const Array &obj) {
 	this->array_size = obj.size();
 	this->elements = new T[this->array_size]();
-	*this = obj;
-	return (*this);
 	std::cout << "Array Copy Assignment operator called." << std::endl;
+	return (*this);
 }
 template<class T>
 T &Array<T>::operator [](std::size_t index) {
