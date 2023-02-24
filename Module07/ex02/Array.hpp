@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 04:50:05 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/23 20:43:42 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/24 03:29:00 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ Array<T>::Array(const Array &obj) {
 template<class T>
 Array<T> &Array<T>::operator =(const Array &obj) {
 	this->array_size = obj.size();
+	if (this->elements)
+		delete[] elements;
 	this->elements = new T[this->array_size]();
 	std::cout << "Array Copy Assignment operator called." << std::endl;
 	return (*this);
