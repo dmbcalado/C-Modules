@@ -3,22 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:23:45 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/22 18:48:44 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/24 19:07:38 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
-
-uintptr_t serialize(Data* ptr) {
-	return (uintptr_t) ptr;
-}
-
-Data* deserialize(uintptr_t raw) {
-	return (Data*) raw;
-}
+#include "Serializer.hpp"
 
 int main() {
 
@@ -28,18 +21,19 @@ int main() {
 	args[1] = "second arg";
 	args[2] = "third arg";
 	Data	myData;
+	Serializer ser;
 	Data	yourData("Your Data Structure", 3, args);
 
 	// Serialize the pointer to the Data object
-	uintptr_t myPtrValue = serialize(&myData);
-	uintptr_t yourPtrValue = serialize(&yourData);
+	uintptr_t myPtrValue = ser.serialize(&myData);
+	uintptr_t yourPtrValue = ser.serialize(&yourData);
 
 	std::cout << "myPtrValue : " << myPtrValue << std::endl;
 	// Deserialize the pointer value and compare with the original pointer
-	if (deserialize(myPtrValue) == &myData) {
+	if (ser.deserialize(myPtrValue) == &myData) {
 		std::cout << "Serialization and deserialization successful." << std::endl;
 	}
-	if (deserialize(yourPtrValue) == &yourData) {
+	if (ser.deserialize(yourPtrValue) == &yourData) {
 		std::cout << "Serialization and deserialization successful." << std::endl;
 	}
 	else {

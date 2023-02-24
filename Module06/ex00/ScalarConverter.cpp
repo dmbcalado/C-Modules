@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Converter.cpp                                      :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,48 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// The trick in this converter is using static_cast<int> template.
+// The trick in this ScalarConverter is using static_cast<int> template.
 
-#include "Converter.hpp"
+#include "ScalarConverter.hpp"
 
-Converter::Converter()
-{
-	std::cout << "Converter Constructor called." << std::endl;
+int			ScalarConverter::integer;
+float		ScalarConverter::floater;
+double		ScalarConverter::doubler;
+std::string	ScalarConverter::argument;
+char		ScalarConverter::character;
+
+ScalarConverter::ScalarConverter() {
+	std::cout << "ScalarConverter Constructor called." << std::endl;
 }
 
-Converter::Converter(std::string argument) : argument(argument)
-{
-	std::cout << "Converter Constructor called." << std::endl;
+ScalarConverter::ScalarConverter(std::string argument) {
+	argument = argument;
+	std::cout << "ScalarConverter Constructor called." << std::endl;
 }
 
-Converter::~Converter()
-{
-	std::cout << " Converter Destructor called." << std::endl;
+ScalarConverter::~ScalarConverter() {
+	std::cout << " ScalarConverter Destructor called." << std::endl;
 }
 
-Converter::Converter(const Converter &original)
-{
+ScalarConverter::ScalarConverter(const ScalarConverter &original) {
 	this->argument = original.argument;
 	this->character = original.character;
 	this->integer = original.integer;
 	this->floater = original.floater;
 	this->doubler = original.doubler;
-	std::cout << " Converter Copy Constructor called." << std::endl;
+	std::cout << " ScalarConverter Copy Constructor called." << std::endl;
 }
 
-Converter &Converter::operator=(const Converter &original)
-{
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &original) {
 	this->argument = original.argument;
 	this->character = original.character;
 	this->doubler = original.doubler;
 	this->floater = original.floater;
 	this->integer = original.integer;
 	return (*this);
-	std::cout << " Converter Copy Assigment operator called" << std::endl;
+	std::cout << " ScalarConverter Copy Assigment operator called" << std::endl;
 }
 
-void	Converter::convertArgToType(void)
-{
+void	ScalarConverter::convertArgToType(void) {
 	char	*end;
 	int	j;
 	long long	in;
@@ -138,10 +139,9 @@ void	Converter::convertArgToType(void)
 		}
 }
 
-void	Converter::convertChar(void)
-{
+void	ScalarConverter::convertChar(void) {
 	std::cout << std::endl;
-	std::cout << "\033[103m\033[1mChar converter called.\033[0m" << std::endl;
+	std::cout << "\033[103m\033[1mChar ScalarConverter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getChar() < 0 && getChar() > 126)
 		std::cout << "\033[101m\033[1mchar: impossible\033[0m  " << std::endl;
@@ -158,10 +158,9 @@ void	Converter::convertChar(void)
 	std::cout << std::endl;
 }
 
-void	Converter::convertInt(void)
-{
+void	ScalarConverter::convertInt(void) {
 	std::cout << std::endl;
-	std::cout << "\033[103m\033[1mInt converter called.\033[0m" << std::endl;
+	std::cout << "\033[103m\033[1mInt ScalarConverter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getInt() < 0 || getInt() > 255)
 		std::cout << "\033[101m\033[1mchar: impossible\033[0m  " << std::endl;
@@ -183,11 +182,10 @@ void	Converter::convertInt(void)
 	std::cout << std::endl;
 }
 
-void	Converter::convertFloat(int x)
-{
+void	ScalarConverter::convertFloat(int x) {
 	setFloat(x);
 	std::cout << std::endl;
-	std::cout << "\033[103m\033[1mFloat converter called.\033[0m" << std::endl;
+	std::cout << "\033[103m\033[1mFloat ScalarConverter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getFloat() < 0 || getFloat() > 255)
 		std::cout << "\033[101m\033[1mchar: impossible\033[0m  " << std::endl;
@@ -210,8 +208,7 @@ void	Converter::convertFloat(int x)
 	std::cout << std::endl;
 }
 
-void	Converter::convertDouble(int x)
-{
+void	ScalarConverter::convertDouble(int x) {
 	std::cout << std::endl;
 	std::cout << "   Double convert" << std::endl;
 	std::cout << std::endl;
@@ -235,8 +232,7 @@ void	Converter::convertDouble(int x)
 	std::cout << std::endl;
 }
 
-void	Converter::convertSpecialFloat(void)
-{
+void	ScalarConverter::convertSpecialFloat(void) {
 	std::cout << std::endl;
 	std::cout << "   Float Special convert" << std::endl;
 	std::cout << std::endl;
@@ -256,15 +252,13 @@ void	Converter::convertSpecialFloat(void)
 	std::cout << std::endl;
 }
 
-void	Converter::convertSpecialDouble(void)
-{
+void	ScalarConverter::convertSpecialDouble(void) {
 	std::cout << std::endl;
 	std::cout << "   Double Special convert" << std::endl;
 	std::cout << std::endl;
 	if (!std::isprint(getChar()))
 		std::cout << "   char: impossible" << std::endl;
-	else
-	{
+	else {
 		setChar(static_cast<char>(getDouble()));
 		std::cout << "   char: " << getChar() << std::endl;
 	}
@@ -277,42 +271,34 @@ void	Converter::convertSpecialDouble(void)
 	std::cout << std::endl;
 }
 
-void	Converter::setInt(int x)
-{
-	this->integer = x;
+void	ScalarConverter::setInt(int x) {
+	integer = x;
 }
 
-void	Converter::setChar(char x)
-{
-	this->character = x;
+void	ScalarConverter::setChar(char x) {
+	character = x;
 }
 
-void	Converter::setFloat(float x)
-{
-	this->floater = x;
+void	ScalarConverter::setFloat(float x) {
+	floater = x;
 }
 
-void	Converter::setDouble(double x)
-{
-	this->doubler = x;
+void	ScalarConverter::setDouble(double x) {
+	doubler = x;
 }
 
-int	Converter::getInt(void)
-{
-	return (this->integer);
+int	ScalarConverter::getInt(void) {
+	return (integer);
 }
 
-char	Converter::getChar(void)
-{
-	return (this->character);
+char	ScalarConverter::getChar(void) {
+	return (character);
 }
 
-float	Converter::getFloat(void)
-{
-	return (this->floater);
+float	ScalarConverter::getFloat(void) {
+	return (floater);
 }
 
-double	Converter::getDouble(void)
-{
-	return (this->doubler);
+double	ScalarConverter::getDouble(void) {
+	return (doubler);
 }

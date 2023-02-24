@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   templates.hpp                                      :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 04:50:05 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/24 16:51:55 by dmendonc         ###   ########.fr       */
+/*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
+/*   Updated: 2023/02/24 19:07:29 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
+
 #include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <iomanip>
+#include <limits.h>
+#include <float.h>
+#include <stdint.h>
 
-#ifndef TEMPLATES_HPP
-# define TEMPLATES_HPP
+#pragma once
 
-template<typename T>
-void	swap(T &value_1 , T &value_2)
+#include "Data.hpp"
+
+class Serializer
 {
-	T save;
-	save = value_1;
-	value_1 = value_2;
-	value_2 = save;
-}
+public:
+	Serializer();
+	~Serializer();
+	Serializer(const Serializer &original);
+	Serializer &operator=(const Serializer &original);
 
-template<typename T>
-T	min(T &value_1 , T &value_2)
-{
-	if(value_1 < value_2)
-		return(value_1);
-	return(value_2);
-}
-
-template<typename T>
-T	max(T &value_1 , T &value_2)
-{
-	if(value_1 > value_2)
-		return(value_1);
-	return(value_2);
-}
+	uintptr_t	serialize(Data *ptr);
+	Data*		deserialize(uintptr_t raw);
+};
 
 #endif

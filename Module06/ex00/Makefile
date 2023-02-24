@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
+#    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 15:01:42 by ratinhosujo       #+#    #+#              #
-#    Updated: 2023/02/16 19:11:16 by ratinhosujo      ###   ########.fr        #
+#    Updated: 2023/02/24 17:00:37 by dmendonc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ GPP = c++
 NAME = converter
 
 SRCS = main.cpp \
-       Converter.cpp \
+       ScalarConverter.cpp \
 
 OBJS = $(SRCS: .cpp = .o)
 

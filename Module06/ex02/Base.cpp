@@ -14,6 +14,8 @@
 
 #include "Base.hpp"
 
+int	timer = 0;
+
 A::A() : Base("A") {
 	std::cout << "Default A Constructor called." << std::endl;
 }
@@ -74,6 +76,10 @@ std::string	Base::getType() {
 Base *generate(void) {
 	Base * ptr;
 
+	if (timer == 0) {
+		srand(time(NULL));
+		timer++;
+	}
 	int random_nbr = rand() % 3 + 1;
 	switch (random_nbr)
 	{

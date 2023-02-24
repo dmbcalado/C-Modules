@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:23:45 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/23 15:44:20 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/24 16:50:49 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_prime(const int &nbr) {
 //instantiated function template (print)
 template< typename T >
 void print( T const & x ) {
-	std::cout << x; 
+	std::cout << x;
 }
 
 int main(void)
