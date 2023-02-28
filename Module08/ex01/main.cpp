@@ -6,59 +6,60 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:23:45 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/24 04:08:00 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/02/27 21:00:59 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "Span.hpp"
 
-int main(void)
+//Overload of operator << for lists
+
+int main()
 {
 	{
 		try {
-			Array<int> Temp_Class;
-			Array<int> Temp_Class_2(5);
-	
-			std::cout << Temp_Class_2[2] << std::endl;
-			std::cout << Temp_Class_2[4] << std::endl;
-			std::cout << Temp_Class_2[5] << std::endl;
+			Span sp = Span(5);
+			sp.addNumber(6);
+			sp.addNumber(3);
+			sp.addNumber(17);
+			sp.addNumber(9);
+			sp.addNumber(11);
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+			sp.addNumber(23);
 		}
 		catch (std::exception &error) {
-			std::cout << error.what() << std::endl;
+			std::cerr << error.what() << std::endl;
+		}
+		
+	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+	{
+		try {
+			Span sp = Span(10000);
+			sp.addNumbers(1, 10000);
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch (std::exception &error) {
+			std::cerr << error.what() << std::endl;
 		}
 	}
 	std::cout << std::endl;
 	std::cout << std::endl;
 	{
 		try {
-			Array<char> Temp_Class_2(5);
-			Array<char> Temp_Class;
-			Temp_Class = Temp_Class_2;
-
-			std::cout << Temp_Class_2[2] << std::endl;
-			std::cout << Temp_Class_2[4] << std::endl;
-			std::cout << Temp_Class[2] << std::endl;
-			std::cout << Temp_Class[4] << std::endl;
+			Span sp = Span(5);
+			sp.addNumber(6);
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+			sp.addNumber(23);
 		}
 		catch (std::exception &error) {
-			std::cout << error.what() << std::endl;
+			std::cerr << error.what() << std::endl;
 		}
+		
 	}
-	std::cout << std::endl;
-	std::cout << std::endl;
-	{
-		try {
-			Array<size_t> Temp_Class_2(5);
-			Array<size_t> Temp_Class = Temp_Class_2;
-	
-			std::cout << Temp_Class_2[2] << std::endl;
-			std::cout << Temp_Class[0] << std::endl;
-			std::cout << Temp_Class[1] << std::endl;
-			std::cout << Temp_Class[5] << std::endl;
-		}
-		catch (std::exception &error) {
-			std::cout << error.what() << std::endl;
-		}
-	}
+	return 0;
 }
-
