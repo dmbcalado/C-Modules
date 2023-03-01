@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 04:31:22 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 15:46:55 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:13:42 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ void	RobotomyRequestForm::function() const
 	}
 	struct timeval tm;
 	gettimeofday(&tm, NULL);
-	srandom(tm.tv_sec + tm.tv_usec * 1000000ul);
-	int num = rand();
-	num = num % 100;
+	srandom(tm.tv_usec % 1000);
+	int num = rand() % 100;
 	if (num > 50)
 		std::cout << target << " has been robotomized successfully 50% of the time." << std::endl;
 	else

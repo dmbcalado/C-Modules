@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:19:10 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 17:29:55 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 16:56:50 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,36 @@ int	Bureaucrat::getGrade() {
 	return Grade;
 }
 
-void	Bureaucrat::IncreaseGrade() {
+void	Bureaucrat::increaseGrade() {
 	if (Grade > 1) {
 		Grade--;
 		std::cout << "Bureaucrat " << Name << " has climbed the letter." << std::endl;
+		std::cout << Name << ", bureaucrat grade ";
+		std::cout << Grade << "." << std::endl;
 	}
 	else {
+		std::cout << "You tried to promote " << Name << ":" << std::endl;
 		std::cout << "Bureaucrat " << Name << " has ";
 		throw(Bureaucrat::GradeTooHighException);
 	}
 }
 
-void	Bureaucrat::DecreaseGrade() {
+void	Bureaucrat::decreaseGrade() {
 	if (Grade < 150) {
 		Grade++;
-		std::cout << "Bureaucrat " << Name << " has lower in the ladder." << std::endl;
+		std::cout << Name << " has lower in the ladder." << std::endl;
+		std::cout << Name << ", bureaucrat grade ";
+		std::cout << Grade << "." << std::endl;
 	}
 	else {
+		std::cout << "You tried to lower " << Name << ":" << std::endl;
 		std::cout << "Bureaucrat " << Name << " has ";
 		throw(Bureaucrat::GradeTooLowException);
 	}
 }
 
 std::ostream& operator<<(std::ostream& stream, Bureaucrat& Bc) {
-	stream << "Name : " << Bc.getName() << std::endl;
-	stream << "Grade : " << Bc.getGrade() << "\n" << std::endl;
+	stream << Bc.getName() << ", bureaucrat grade ";
+	stream << Bc.getGrade() << "." << std::endl;
 	return stream;
 }

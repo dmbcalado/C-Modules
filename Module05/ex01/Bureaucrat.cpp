@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:19:10 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 17:32:36 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:08:55 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:23:45 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 18:39:23 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:02:57 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 #include "Form.hpp"
 
 int main()
-{	// Tereza should be hired in 2nd attempt
+{	// Elon should be hired in 2nd attempt
 	{
 		Form Hiring("beHired", 2, 5);
-		Bureaucrat Tereza("Tereza", 3);
+		Bureaucrat Elon("Elon", 3);
 		Bureaucrat Jorge("Jorge", 5);
 		std::cout << std::endl;
 
-		Tereza.getName();
-		Tereza.getGrade();
+		Elon.getName();
+		Elon.getGrade();
 		try{
 			Jorge.DecreaseGrade();
-			Hiring.beSigned(Tereza);
-			Tereza.IncreaseGrade();
-			Hiring.beSigned(Tereza);
+			Hiring.beSigned(Elon);
+			Elon.IncreaseGrade();
+			Hiring.beSigned(Elon);
 		}
 		catch (std::exception &error) {
 			std::cerr << error.what() << std::endl;
@@ -37,15 +37,15 @@ int main()
 	std::cout << std::endl;
 	{
 		Form Hiring("beHired", 2, 5);
-		Bureaucrat Tereza("Tereza", 3);
+		Bureaucrat Elon("Elon", 3);
 		Bureaucrat Jorge("Jorge", 4);
 		std::cout << std::endl;
 
-		Tereza.getName();
-		Tereza.getGrade();
+		Elon.getName();
+		Elon.getGrade();
 		try{
 			Jorge.DecreaseGrade();
-			Hiring.beSigned(Tereza);
+			Hiring.beSigned(Elon);
 			Hiring.beSigned(Jorge);
 			Jorge.DecreaseGrade();
 			Hiring.beSigned(Jorge);
@@ -54,21 +54,21 @@ int main()
 			std::cerr << error.what() << std::endl;
 		}
 	}
-	// GradeTooLowException should be hited in Tereza
+	// GradeTooLowException should be hited in Elon
 	std::cout << std::endl;
 	{
 		Form Hiring("beHired", 2, 5);
-		Bureaucrat Tereza("Tereza", 1);
+		Bureaucrat Elon("Elon", 1);
 		Bureaucrat Jorge("Jorge", 4);
 		std::cout << std::endl;
 
-		Tereza.getName();
-		Tereza.getGrade();
+		Elon.getName();
+		Elon.getGrade();
 		try{
-			Tereza.IncreaseGrade();
-			Hiring.beSigned(Tereza);
+			Elon.IncreaseGrade();
+			Hiring.beSigned(Elon);
 			Hiring.beSigned(Jorge);
-			Hiring.beSigned(Tereza);
+			Hiring.beSigned(Elon);
 		}
 		catch (std::exception &error) {
 			std::cerr << error.what() << std::endl;

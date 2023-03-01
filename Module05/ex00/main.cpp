@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:23:45 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/14 19:58:36 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 16:57:31 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 int main()
 {
-	// GradeTooHighException should be hited in Tereza
+	// GradeTooHighException should be hited in SMaster
 	{
-		Bureaucrat Tereza("Tereza", 1);
+		Bureaucrat SMaster("SMaster", 1);
 		Bureaucrat Jorge("Jorge", 2);
+
+		std::cout << Jorge.getName() << std::endl;
+		std::cout << Jorge.getGrade() << std::endl;
 		try{
-	
+
 			std::cout << std::endl;
-			std::cout << Tereza;
+			std::cout << SMaster;
 			std::cout << Jorge;
-			Jorge.DecreaseGrade();
-			Tereza.IncreaseGrade();
-			Jorge.DecreaseGrade();
+			Jorge.decreaseGrade();
+			SMaster.increaseGrade();
+			Jorge.decreaseGrade();
 		}
 		catch (std::exception &error) {
 			std::cerr << error.what() << std::endl;
@@ -34,16 +37,16 @@ int main()
 	std::cout << std::endl;
 	// GradeTooLowException should be hited in Jorge
 	{
-		Bureaucrat Tereza("Tereza", 1);
+		Bureaucrat SMaster("SMaster", 1);
 		Bureaucrat Jorge("Jorge", 149);
 		try{
-	
+
 			std::cout << std::endl;
-			Tereza.getName();
-			Tereza.getGrade();
-			Jorge.DecreaseGrade();
-			Tereza.DecreaseGrade();
-			Jorge.DecreaseGrade();
+			SMaster.getName();
+			SMaster.getGrade();
+			Jorge.decreaseGrade();
+			SMaster.decreaseGrade();
+			Jorge.decreaseGrade();
 		}
 		catch (std::exception &error) {
 			std::cerr << error.what() << std::endl;
@@ -53,14 +56,14 @@ int main()
 	// GradeTooLowException on creation
 	{
 		try{
-			Bureaucrat Tereza("Tereza", 1);
+			Bureaucrat SMaster("SMaster", 1);
 			Bureaucrat Jorge("Jorge", 151);
 
 			std::cout << std::endl;
-			Tereza.getName();
-			Tereza.getGrade();
+			SMaster.getName();
+			SMaster.getGrade();
 			std::cout << Jorge;
-			std::cout << Tereza;
+			std::cout << SMaster;
 		}
 		catch (std::exception &error) {
 			std::cerr << error.what() << std::endl;

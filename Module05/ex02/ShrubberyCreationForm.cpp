@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 04:06:35 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 15:46:45 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:16:12 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ShrubberyCreationForm::function() const
 	std::string		file_to_write;
 	file_to_write = this->target;
 	file_to_write.append("_shrubbery");
-	file.open(file_to_write.c_str(), std::ios::in | std::ios::trunc);
+	file.open(file_to_write.c_str(), std::ios::in | std::ios::app);
 	if (!file)
 		std::cout << "Not able to create the file" << std::endl;
 	file << "                     ; ; ; " << std::endl;

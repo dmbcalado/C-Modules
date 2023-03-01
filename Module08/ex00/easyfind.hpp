@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 03:44:41 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/27 18:01:53 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 17:22:47 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typename T::iterator easyfind(T &container, int value) {
 }
 
 template<typename T>
-typename std::map<T,T>::iterator easyfind(std::map<T,T> &container, int value) {
+typename std::map<T, int>::iterator easyfind(std::map<T, int> &container, int value) {
 	if (container.find(value) == container.end())
 		throw NotFound();
 	return container.find(value);

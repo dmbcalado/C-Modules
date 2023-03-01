@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:48 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2023/02/16 17:42:41 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2023/03/01 16:48:46 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ public:
 	std::string	getName();
 
 	//Increase and Decrease grade
-	void	IncreaseGrade();
-	void	DecreaseGrade();
+	void	increaseGrade();
+	void	decreaseGrade();
 
 	GradeTooHigh GradeTooHighException;
 	GradeTooLow GradeTooLowException;
