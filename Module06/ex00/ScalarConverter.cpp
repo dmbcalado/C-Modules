@@ -24,8 +24,9 @@ ScalarConverter::ScalarConverter() {
 	std::cout << "ScalarConverter Constructor called." << std::endl;
 }
 
-ScalarConverter::ScalarConverter(std::string argument) {
-	argument = argument;
+ScalarConverter::ScalarConverter(std::string arg) {
+	argument = arg;
+	floater = 0;
 	std::cout << "ScalarConverter Constructor called." << std::endl;
 }
 
@@ -52,11 +53,66 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &original) {
 	std::cout << " ScalarConverter Copy Assigment operator called" << std::endl;
 }
 
-void	ScalarConverter::convertArgToType(void) {
-	char	*end;
+int	ScalarConverter::convert_inf(void) {
+	if (!argument.compare("nanf") || !argument.compare("-inff") || !argument.compare("+inff"))
+	{
+		setFloat(atof(argument.c_str()));
+		convertSpecialFloat();
+		return 1;
+	}
+	else if (!argument.compare("nan") || !argument.compare("-inf") || !argument.compare("+inf"))
+	{
+		setDouble(atof(argument.c_str()));
+		convertSpecialDouble();
+		return 1;
+	}
+	return 0;
+}
+
+int	ScalarConverter::dot_found(int i) {
 	int	j;
-	long long	in;
+	char	*end;
 	long double test;
+
+	if (!argument[++i] || !std::isdigit(argument.c_str()[i]))
+		return 0;
+	j = i;
+	while (std::isdigit(argument.c_str()[i++])){}
+	if (argument[i - 1] == 'f' && !argument[i])
+	{
+		test = std::strtod(argument.c_str(), &end);
+		if (test < FLT_MIN || test > FLT_MAX)
+		{
+			std::cout << "Float Overflow" << std::endl;
+			return 0;
+		}
+		else
+		{
+			setFloat(test);
+			convertFloat(argument.length() - j - 1);
+			return 0;
+		}
+	}
+	else if (argument[i - 2] && !argument[i - 1])
+	{
+		test = std::strtod(argument.c_str(), &end);
+		if (test < DBL_MIN || test > DBL_MAX)
+		{
+			std::cout << "Double Overflow" << std::endl;
+			return 0;
+		}
+		else
+		{
+			setDouble(std::strtod(argument.c_str(), &end));
+			convertDouble(argument.length() - j);
+			return 0;
+		}
+	}
+	return 1;
+}
+
+void	ScalarConverter::convertArgToType(void) {
+	long long	in;
 
 	for (size_t i = 0; i < argument.length(); i++)
 	{
@@ -70,53 +126,11 @@ void	ScalarConverter::convertArgToType(void) {
 			}
 			else if (argument[i] == '.')
 			{
-				if (!argument[++i] || !std::isdigit(argument.c_str()[i]))
+				if (!dot_found(i))
 					return ;
-				j = i;
-				while (std::isdigit(argument.c_str()[i++])){}
-				if (argument[i - 1] == 'f' && !argument[i])
-				{
-					test = atof(argument.c_str());
-					if (test < FLT_MIN || test > FLT_MAX)
-					{
-						std::cout << "Float Overflow" << std::endl;
-						return ;
-					}
-					else
-					{
-						setFloat(test);
-						convertFloat(argument.length() - j - 1);
-						return ;
-					}
-				}
-				else if (argument[i - 2] && !argument[i - 1])
-				{
-					test = std::strtod(argument.c_str(), &end);
-					if (test < DBL_MIN || test > DBL_MAX)
-					{
-						std::cout << "Double Overflow" << std::endl;
-						return ;
-					}
-					else
-					{
-						setDouble(std::strtod(argument.c_str(), &end));
-						convertDouble(argument.length() - j);
-						return ;
-					}
-				}
 			}
-			else if (!argument.compare("nanf") || !argument.compare("-inff") || !argument.compare("+inff"))
-			{
-				setFloat(atof(argument.c_str()));
-				convertSpecialFloat();
+			else if (convert_inf())
 				return ;
-			}
-			else if (!argument.compare("nan") || !argument.compare("-inf") || !argument.compare("+inf"))
-			{
-				setDouble(atof(argument.c_str()));
-				convertSpecialDouble();
-				return ;
-			}
 			else if (argument[i] == '-')
 				i++;
 			else
@@ -125,18 +139,18 @@ void	ScalarConverter::convertArgToType(void) {
 				return ;
 			}
 		}
-		}
-		in = atol(argument.c_str());
-		if (in < INT_MIN || in > INT_MAX)
-		{
-			std::cout << "Int overflow" << std::endl;
-			return ;
-		}
-		else
-		{
-			setInt(in);
-			convertInt();
-		}
+	}
+	in = atol(argument.c_str());
+	if (in < INT_MIN || in > INT_MAX)
+	{
+		std::cout << "Int overflow" << std::endl;
+		return ;
+	}
+	else
+	{
+		setInt(in);
+		convertInt();
+	}
 }
 
 void	ScalarConverter::convertChar(void) {
@@ -183,7 +197,6 @@ void	ScalarConverter::convertInt(void) {
 }
 
 void	ScalarConverter::convertFloat(int x) {
-	setFloat(x);
 	std::cout << std::endl;
 	std::cout << "\033[103m\033[1mFloat ScalarConverter called.\033[0m" << std::endl;
 	std::cout << std::endl;
@@ -201,16 +214,15 @@ void	ScalarConverter::convertFloat(int x) {
 	}
 	setInt(static_cast<int>(getFloat()));
 	std::cout << "\033[104m\033[1mint:   \033[0m  " << getInt() << std::endl;
-	setFloat(static_cast<float>(getInt()));
-	std::cout << "\033[104m\033[1mfloat:   \033[0m  " << std::setprecision(1) << std::fixed << getFloat() << "f" << std::endl;
+	std::cout << "\033[104m\033[1mfloat:   \033[0m  " << std::setprecision(x) << std::fixed << getFloat() << "f" << std::endl;
 	setDouble(static_cast<double>(getFloat()));
-	std::cout << "\033[104m\033[1mdouble:   \033[0m  " << std::setprecision(1) << std::fixed << getDouble() << std::endl;
+	std::cout << "\033[104m\033[1mdouble:   \033[0m  " << std::setprecision(x) << std::fixed << getDouble() << std::endl;
 	std::cout << std::endl;
 }
 
 void	ScalarConverter::convertDouble(int x) {
 	std::cout << std::endl;
-	std::cout << "   Double convert" << std::endl;
+	std::cout << "\033[103m\033[1mDouble ScalarConverter called.\033[0m" << std::endl;
 	std::cout << std::endl;
 	if (getDouble() < 0 || getDouble() > 255)
 		std::cout << "   char: impossible" << std::endl;
