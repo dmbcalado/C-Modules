@@ -20,6 +20,6 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		BitcoinExchange	Binance;
-		BitcoinExchange CoinBase(argv[1]);
+		Binance.ExchangeRate(argv[1]);
 	}
 }

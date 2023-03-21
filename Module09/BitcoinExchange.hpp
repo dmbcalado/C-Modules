@@ -41,7 +41,7 @@ public:
 class BitcoinExchange {
 public:
 	BitcoinExchange();
-	BitcoinExchange(const char *str);
+	float ExchangeRate(const char *str);
 
 private:
 	std::fstream	in_fname;
