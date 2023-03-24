@@ -25,15 +25,14 @@ all :	$(NAME)
 
 $(NAME): $(OBJS)
 	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
-	@echo	"\033[102m\033[1mspan created.\033[0m"
+	@echo	"\033[102m\033[1mbtc created.\033[0m"
 
 clean :
 	@rm -rf *.o
-	@echo	"Object Files Deleted"
 
 fclean :	clean
 	@rm -rf $(NAME)
-	@echo	"\033[101m\033[1mspan deleted.\033[0m"
+	@echo	"\033[101m\033[1mbtc deleted.\033[0m"
 
 re :	fclean all
 

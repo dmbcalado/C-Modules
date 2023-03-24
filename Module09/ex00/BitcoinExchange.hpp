@@ -22,26 +22,19 @@
 # include <string>
 # include <cstring>
 
-class OutOfRange : public std::exception {
+class BitcoinExchange
+{
 public:
-	const char	*what() const throw() {
-	std::cout << "\033[101m\033[1mOut of Range of the Span List. \033[0m\n" << std::endl;
-	return ("\033[103m\033[1mOut of Range\033[0m");
-	}
-} ;
 
-class LessThenTwoNbrs : public std::exception {
-public:
-	const char	*what() const throw() {
-	std::cout << "\033[101m\033[1mNot enought members in List. \033[0m\n" << std::endl;
-	return ("\033[103m\033[1mNot enought members\033[0m");
-	}
-} ;
-
-class BitcoinExchange {
-public:
 	BitcoinExchange();
-	float ExchangeRate(const char *str);
+
+	int		CheckValidDate(std::string line);
+	int		CheckValidNmbr(std::string line);
+	void	MakeCalculations(std::string line, float ExRate);
+	void	ExchangeRateData(const char *str);
+	int		NextEnd(const char *line, int nth);
+	std::map<std::string, float>::iterator FindBestKey(std::string date, float ExRate);
+	std::map<std::string, float>::iterator FindClosestKey(std::string date);
 
 private:
 	std::fstream	in_fname;

@@ -16,10 +16,10 @@
 
 int main(int argc, char *argv[])
 {
-	std::cout << argc << std::endl;
+	std::cout << std::endl;
 	if (argc == 2)
 	{
 		BitcoinExchange	Binance;
-		Binance.ExchangeRate(argv[1]);
+		Binance.ExchangeRateData(argv[1]);
 	}
 }
