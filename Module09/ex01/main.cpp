@@ -16,47 +16,37 @@
 
 int main(int argc, char *argv[])
 {
-	int	cnt = 0, nbr, oper;
+	int	nbr, oper;
 
 	if (argc >= 2)
 	{
 		ReversePN	Calculator;
 
-		if (argc == 2)
+		if (argc == 2 && argv[1][0])
 		{
 			std::string str = argv[1], splited_str;
 			std::stringstream stream(str);
 			while(std::getline(stream, splited_str, ' '))
 			{
-				if (cnt == 0 || cnt % 2 == 1)
+				if (std::isdigit(splited_str[0]))
 				{
 					nbr = Calculator.CharToInt(splited_str[0]);
 					if(nbr >= 0)
 						Calculator.AddNbr(nbr);
-					else {
-						if (Calculator.CharToOperator(splited_str[0]) < 0)
-							std::cout << "\033[101m\033[1mError\033[0m" << std::endl;
-						else
-							std::cout << "\033[103m\033[1m" << 0 << "\033[0m" << std::endl;
-						return (0);
-					}
 				}
-				else
+				else if (splited_str[0] == '+' || splited_str[0] == '-' || splited_str[0] == '*' || splited_str[0] == '/')
 				{
 					oper = Calculator.CharToOperator(splited_str[0]);
-					if (oper > 0)
-						Calculator.PerformOperation(oper);
-					else {
-						if (Calculator.CharToInt(splited_str[0]) < 0)
-							std::cout << "\033[101m\033[1mError\033[0m" << std::endl;
-						else
-							std::cout << "\033[103m\033[1m" << 0 << "\033[0m" << std::endl;
-						return (0);
-					}
+					if (Calculator.PerformOperation(oper) < 0)
+						return (-1);
 				}
-				cnt++;
+				else
+					std::cout << "\033[101m\033[1mError\033[0m" << std::endl;
 			}
-			std::cout << "\033[102m\033[1m" << Calculator.ReturnTop() << "\033[0m" << std::endl;
+			if (Calculator.ReturnSize() == 1)
+				std::cout << "\033[102m\033[1m" << Calculator.ReturnTop() << "\033[0m" << std::endl;
+			else
+					std::cout << "\033[101m\033[1mError\033[0m" << std::endl;
 		}
 	}
 	return (0);

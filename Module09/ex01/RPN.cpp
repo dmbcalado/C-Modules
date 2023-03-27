@@ -30,6 +30,11 @@ ReversePN &ReversePN::operator=(const ReversePN &obj)
 	return (*this);
 }
 
+int		ReversePN::ReturnSize(void)
+{
+	return (data.size());
+}
+
 int		ReversePN::ReturnTop(void)
 {
 	return (data.top());
@@ -40,20 +45,26 @@ void	ReversePN::AddNbr(int nbr)
 	data.push(nbr);
 }
 
-void	ReversePN::PerformOperation(int oper)
+int	ReversePN::PerformOperation(int oper)
 {
-	int f_nbr = data.top();
+	int f_nbr, s_nbr;
+	if (data.size() < 2) {
+		std::cout << "Error" << std::endl;
+		return (-1);
+	}
+	f_nbr = data.top();
 	data.pop();
-	int s_nbr = data.top();
+	s_nbr = data.top();
 	data.pop();
 	if (oper == 1)
-		data.push(f_nbr + s_nbr);
+		data.push(s_nbr + f_nbr);
 	if (oper == 2)
 		data.push(s_nbr - f_nbr);
 	if (oper == 3)
-		data.push(f_nbr / s_nbr);
+		data.push(s_nbr / f_nbr);
 	if (oper == 4)
-		data.push(f_nbr * s_nbr);
+		data.push(s_nbr * f_nbr);
+	return (1);
 	//std::cout << "result is : " <<  data.top() << std::endl;
 }
 

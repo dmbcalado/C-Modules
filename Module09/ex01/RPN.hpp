@@ -16,6 +16,7 @@
 # define MAX_INT 1000
 
 # include <stack>
+# include <cctype>
 # include <algorithm>
 # include <iostream>
 # include <fstream>
@@ -34,8 +35,9 @@ public:
 	void	AddNbr(int nbr);
 	int		CharToInt(char c);
 	int		CharToOperator(char c);
-	void	PerformOperation(int oper);
+	int		PerformOperation(int oper);
 	int		ReturnTop(void);
+	int		ReturnSize();
 
 private:
 	std::stack<int> data;
