@@ -11,39 +11,32 @@
 /* ************************************************************************** */
 
 
-#ifndef BITCOINEXCHANGE_HPP
-# define BITCOINEXCHANGE_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 # define MAX_INT 1000
 
-# include <map>
+# include <stack>
 # include <algorithm>
 # include <iostream>
 # include <fstream>
 # include <string>
 # include <cstring>
+# include <bits/stdc++.h>
 
-class BitcoinExchange
+class ReversePN
 {
 public:
 
-	BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange &obj);
-	BitcoinExchange &operator = (const BitcoinExchange &obj);
+	ReversePN();
+	ReversePN(const ReversePN &obj);
+	ReversePN &operator = (const ReversePN &obj);
 
-	int		CheckValidDate(std::string line);
-	int		CheckValidNmbr(std::string line);
-	void	MakeCalculations(std::string line, float ExRate);
-	void	ExchangeRateData(const char *str);
-	int		NextEnd(const char *line, int nth);
-	std::map<std::string, float>::iterator FindBestKey(std::string date, float ExRate);
-	std::map<std::string, float>::iterator FindClosestKey(std::string date);
-
+	void	AddNbr(int nbr);
+	int		CharToInt(char c);
+	int		CharToOperator(char c);
+	void	PerformOperation(int oper);
 private:
-	std::fstream	in_fname;
-	std::ifstream	data_base;
-	std::map<std::string, float> data;
-	std::map<std::string, float>::iterator itr;
-
+	std::stack<int> data;
 };
 
 #endif

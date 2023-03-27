@@ -30,6 +30,20 @@ BitcoinExchange::BitcoinExchange()
 		std::cout << "could not open the database" << std::endl;
 }
 
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj)
+{
+	this->data = obj.data;
+	std::cout << " BitcoinExchange Copy Constructor called." << std::endl;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj)
+{
+	this->data = obj.data;
+	std::cout << " BitcoinExchange Copy Assigment operator called." << std::endl;
+	return (*this);
+}
+
+
 int	BitcoinExchange::NextEnd(const char *line, int nth)
 {
 	char *res = (char *)line;
@@ -55,7 +69,7 @@ int	BitcoinExchange::CheckValidDate(std::string line)
 			end = line.find(" | ");
 		if (end <= 0)
 		{
-			std::cout << "\033[101m\033[1mError: invalid structure, missing at least => | before value\033[0m" << std::endl;
+			std::cout << "\033[101m\033[1mError: invalid structure. Expected : date | value\033[0m" << std::endl;
 			std::cout << std::endl;
 			return (-1);
 		}
@@ -69,7 +83,7 @@ int	BitcoinExchange::CheckValidDate(std::string line)
 		start = end + 1;
 		cnt++;
 	}
-	std::cout << "valid date: " << line.substr(0, line.find(" | ")) << std::endl;
+	//std::cout << "valid date: " << line.substr(0, line.find(" | ")) << std::endl;
 	return (1);
 }
 
@@ -124,7 +138,7 @@ std::map<std::string, float>::iterator BitcoinExchange::FindClosestKey(std::stri
 		std::string strd = itr->first.substr(start, end);
 		if (strv == strd)
 		{
-			std::cout << strd << " vs " << strv << std::endl;
+			//std::cout << strd << " vs " << strv << std::endl;
 			while(itr != data.end())
 			{
 				start = 0;
@@ -135,7 +149,7 @@ std::map<std::string, float>::iterator BitcoinExchange::FindClosestKey(std::stri
 					itr++;
 				else
 				{
-					std::cout << "closest of : " << strv << " is :" << strd << std::endl;
+					//std::cout << "closest of : " << strv << " is :" << strd << std::endl;
 					return(itr--);
 				}
 			}
