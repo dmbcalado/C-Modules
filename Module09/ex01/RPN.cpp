@@ -14,20 +14,25 @@
 
 ReversePN::ReversePN() 
 {
-	std::cout << "ReversePN created." << std::endl;
+	//std::cout << "ReversePN created." << std::endl;
 }
 
 ReversePN::ReversePN(const ReversePN &obj)
 {
 	this->data = obj.data;
-	std::cout << " ReversePN Copy Constructor called." << std::endl;
+	//std::cout << " ReversePN Copy Constructor called." << std::endl;
 }
 
 ReversePN &ReversePN::operator=(const ReversePN &obj)
 {
 	this->data = obj.data;
-	std::cout << " ReversePN Copy Assigment operator called." << std::endl;
+	//std::cout << " ReversePN Copy Assigment operator called." << std::endl;
 	return (*this);
+}
+
+int		ReversePN::ReturnTop(void)
+{
+	return (data.top());
 }
 
 void	ReversePN::AddNbr(int nbr)
@@ -44,12 +49,12 @@ void	ReversePN::PerformOperation(int oper)
 	if (oper == 1)
 		data.push(f_nbr + s_nbr);
 	if (oper == 2)
-		data.push(f_nbr - s_nbr);
+		data.push(s_nbr - f_nbr);
 	if (oper == 3)
 		data.push(f_nbr / s_nbr);
 	if (oper == 4)
 		data.push(f_nbr * s_nbr);
-	std::cout << "result is : " <<  data.top() << std::endl;
+	//std::cout << "result is : " <<  data.top() << std::endl;
 }
 
 int	ReversePN::CharToInt(char c)

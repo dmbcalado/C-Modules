@@ -35,6 +35,8 @@ public:
 	int		CharToInt(char c);
 	int		CharToOperator(char c);
 	void	PerformOperation(int oper);
+	int		ReturnTop(void);
+
 private:
 	std::stack<int> data;
 };
