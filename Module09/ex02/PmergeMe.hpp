@@ -15,28 +15,43 @@
 # define PMERGEME_HPP
 # define MAX_INT 1000
 
+# include <deque>
 # include <vector>
-# include <algorithm>
 # include <iostream>
-# include <fstream>
 # include <string>
 # include <cstring>
 # include <bits/stdc++.h>
+# include  <sys/time.h>
 
 class PmergeMe
 {
 public:
 
 	PmergeMe();
+	//for vectors
+	PmergeMe(int argc, char *argv[]);
+	//for lists
+	PmergeMe(int argc, char * argv[], int flag);
 	PmergeMe(const PmergeMe &obj);
 	PmergeMe &operator = (const PmergeMe &obj);
 
-	void	Merge(int nbr);
-	void	Insertion(int start, int last);
-	int		Sort(char c);
+	// for vectors
+	void	Merge(int left, int mid, int right);
+	void	Insertion(int left, int right);
+	void	MergeInsertionSort(int left, int right);
+	void	PrintStack(void);
+	// for lists
+	void	MergeD(int left, int mid, int right);
+	void	InsertionD(int left, int right);
+	void	MergeInsertionSortD(int left, int right);
+	void	PrintDStack(void);
+	double	GetTime(void);
 
 private:
+	int		threshould;
+	struct timeval start, end;
 	std::vector<int> stack;
+	std::deque<int> stack_deque;
 };
 
 #endif

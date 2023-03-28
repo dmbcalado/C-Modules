@@ -15,7 +15,7 @@ GPP = c++
 NAME = PmergeMe
 
 SRCS = main.cpp \
-       PMergeMe.cpp
+       PmergeMe.cpp
 
 OBJS = $(SRCS: .cpp = .o)
 
@@ -25,14 +25,14 @@ all :	$(NAME)
 
 $(NAME): $(OBJS)
 	@$(GPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
-	@echo	"\033[102m\033[1mRPN created.\033[0m"
+	@echo	"\033[102m\033[1mPmergeMe created.\033[0m"
 
 clean :
 	@rm -rf *.o
 
 fclean :	clean
 	@rm -rf $(NAME)
-	@echo	"\033[101m\033[1mRPN deleted.\033[0m"
+	@echo	"\033[101m\033[1mPmergeMe deleted.\033[0m"
 
 re :	fclean all
 
