@@ -16,24 +16,35 @@ PmergeMe::PmergeMe()
 {
 	threshould = 1;
 	gettimeofday(&start, NULL);
-	//std::cout << "PmergeMe created." << std::endl;
 }
 
 PmergeMe::PmergeMe(int argc, char *argv[])
 {
+	int nbr;
 	threshould = 1;
 	gettimeofday(&start, NULL);
 	for (int i = 1; i < argc; i++)
+	{
+		nbr = std::atoi(argv[i]);
+		if(nbr == 0 && (argv[i][0] != '0' || argv[i][1] != 0))
+			throw(NotANbrException);
 		stack.push_back(std::atoi(argv[i]));
+	}
 }
 
 PmergeMe::PmergeMe(int argc, char *argv[], int flag)
 {
+	int nbr;
 	(void)flag;
 	threshould = 1;
 	gettimeofday(&start, NULL);
 	for (int i = 1; i < argc; i++)
+	{
+		nbr = std::atoi(argv[i]);
+		if(nbr == 0 && (argv[i][0] != '0' || argv[i][1] != 0))
+			throw(NotANbrException);
 		stack_deque.push_back(std::atoi(argv[i]));
+	}
 }
 
 PmergeMe::PmergeMe(const PmergeMe &obj)

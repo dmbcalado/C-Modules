@@ -19,28 +19,41 @@ int main(int argc, char *argv[])
 	{
 		if (argc > 1)
 		{
-			PmergeMe Sorter(argc, argv);
-			std::cout << "Before: ";
-			Sorter.PrintStack();
-			Sorter.MergeInsertionSort(0, argc - 2);
-			std::cout << "After: ";
-			Sorter.PrintStack();
-			Sorter.GetTime();
-			std::cout << "Time to process a range of " << argc -2;
-			std::cout << " elements with std::vector : "<< Sorter.GetTime() << " us" << std::endl;
+			try
+			{
+				PmergeMe Sorter(argc, argv);
+
+				std::cout << "Before: ";
+				Sorter.PrintStack();
+				Sorter.MergeInsertionSort(0, argc - 2);
+				std::cout << "After: ";
+				Sorter.PrintStack();
+				Sorter.GetTime();
+				std::cout << "Time to process a range of " << argc -2;
+				std::cout << " elements with std::vector : "<< Sorter.GetTime() << " us" << std::endl;
+			}
+			catch (std::exception &error) {
+				error.what();
+			}
 		}
 	}
 	{
 		if (argc > 1)
 		{
-			PmergeMe SorterD(argc, argv, 0);
-			//SorterD.PrintDStack();
-			SorterD.MergeInsertionSortD(0, argc - 2);
-			//std::cout << std::endl;
-			//Sorter.PrintDStack();
-			//::cout << std::endl;
-			std::cout << "Time to process a range of " << argc -2;
-			std::cout << " elements with std::deque : "<< SorterD.GetTime() << " us" << std::endl;
+			try
+			{
+				PmergeMe SorterD(argc, argv, 0);
+				//SorterD.PrintDStack();
+				SorterD.MergeInsertionSortD(0, argc - 2);
+				//std::cout << std::endl;
+				//Sorter.PrintDStack();
+				//::cout << std::endl;
+				std::cout << "Time to process a range of " << argc -2;
+				std::cout << " elements with std::deque : "<< SorterD.GetTime() << " us" << std::endl;
+			}
+			catch (std::exception &error) {
+				error.what();
+			}
 		}
 	}
 }

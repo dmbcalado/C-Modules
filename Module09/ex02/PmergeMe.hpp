@@ -23,6 +23,14 @@
 # include <bits/stdc++.h>
 # include  <sys/time.h>
 
+class NotANbr : public std::exception {
+public:
+	const char	*what() const throw() {
+	std::cout << "\033[101m\033[1mArgument different then an integer found.\033[0m\n" << std::endl;
+	return ("\033[103m\033[1mInvalid Argument.\033[0m");
+}
+} ;
+
 class PmergeMe
 {
 public:
@@ -47,6 +55,7 @@ public:
 	void	PrintDStack(void);
 	double	GetTime(void);
 
+	NotANbr NotANbrException;
 private:
 	int		threshould;
 	struct timeval start, end;
