@@ -40,8 +40,10 @@ int main(int argc, char *argv[])
 					if (Calculator.PerformOperation(oper) < 0)
 						return (-1);
 				}
-				else
+				else {
 					std::cout << "\033[101m\033[1mError\033[0m" << std::endl;
+					return (-1);
+				}
 			}
 			if (Calculator.ReturnSize() == 1)
 				std::cout << "\033[102m\033[1m" << Calculator.ReturnTop() << "\033[0m" << std::endl;

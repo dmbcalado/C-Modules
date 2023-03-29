@@ -49,7 +49,7 @@ int	ReversePN::PerformOperation(int oper)
 {
 	int f_nbr, s_nbr;
 	if (data.size() < 2) {
-		std::cout << "Error" << std::endl;
+		std::cout << "\033[101m\033[1mError\033[0m" << std::endl;
 		return (-1);
 	}
 	f_nbr = data.top();

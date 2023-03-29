@@ -149,8 +149,8 @@ std::map<std::string, float>::iterator BitcoinExchange::FindClosestKey(std::stri
 					itr++;
 				else
 				{
-					//std::cout << "closest of : " << strv << " is :" << strd << std::endl;
-					return(itr--);
+					--itr;
+					return(itr);
 				}
 			}
 			break;
@@ -199,6 +199,6 @@ void	BitcoinExchange::ExchangeRateData(const char *str)
 	in_fname.close();
 	data_base.close();
 	std::cout << "\033[104m\033[1msuccessfully closed input file\033[0m" << std::endl;
-	std::cout << "\033[104m\033[1msuccessfully closeed database\033[0m" << std::endl;
+	std::cout << "\033[104m\033[1msuccessfully closed database\033[0m" << std::endl;
 	std::cout << std::endl;
 }
